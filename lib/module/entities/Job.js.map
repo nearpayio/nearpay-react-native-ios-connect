@@ -1,0 +1,1 @@
+{"version":3,"names":["Job","constructor","id","method"],"sourceRoot":"../../../src","sources":["entities/Job.tsx"],"mappings":"AAEA,eAAe,MAAMA,GAAG,CAAC;EAGrBC,WAAWA,CAACC,EAAU,EAACC,MAAc,EAAC;IACpC,IAAI,CAACD,EAAE,GAAGA,EAAE;IACZ,IAAI,CAACC,MAAM,GAAGA,MAAM;EACtB;AACF","ignoreList":[]}

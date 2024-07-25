@@ -1,0 +1,480 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.nearpayconnectcoreexample"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:3:5-67
+11-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:3:22-64
+12    <!--
+13    This manifest file is used only by Gradle to configure debug-only capabilities
+14    for React Native Apps.
+15    -->
+16    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+16-->[com.facebook.react:react-android:0.74.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/813da8d64613d3a874726517fb776e54/transformed/jetified-react-android-0.74.0-debug/AndroidManifest.xml:16:5-78
+16-->[com.facebook.react:react-android:0.74.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/813da8d64613d3a874726517fb776e54/transformed/jetified-react-android-0.74.0-debug/AndroidManifest.xml:16:22-75
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:11:5-79
+17-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:11:22-76
+18    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+18-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:12:5-76
+18-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:12:22-73
+19    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+19-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:13:5-83
+19-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:13:22-80
+20    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+20-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:14:5-16:53
+20-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:15:9-61
+21    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+21-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:10:5-77
+21-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:10:22-74
+22    <uses-permission android:name="android.permission.WAKE_LOCK" />
+22-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:11:5-68
+22-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:11:22-65
+23    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+23-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:13:5-82
+23-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:13:22-79
+24    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+24-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:14:5-80
+24-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:14:22-77
+25    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+25-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:16:5-18:40
+25-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:17:9-65
+26    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+26-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:27:5-81
+26-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:27:22-78
+27
+28    <permission
+28-->[androidx.core:core:1.9.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+29        android:name="com.nearpayconnectcoreexample.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+29-->[androidx.core:core:1.9.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+30        android:protectionLevel="signature" />
+30-->[androidx.core:core:1.9.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+31
+32    <uses-permission android:name="com.nearpayconnectcoreexample.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+32-->[androidx.core:core:1.9.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+32-->[androidx.core:core:1.9.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+33
+34    <application
+34-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:5:5-24:19
+35        android:name="com.nearpayconnectcoreexample.MainApplication"
+35-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:6:7-38
+36        android:allowBackup="false"
+36-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:10:7-34
+37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+37-->[androidx.core:core:1.9.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+38        android:debuggable="true"
+39        android:extractNativeLibs="false"
+40        android:icon="@mipmap/ic_launcher"
+40-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:8:7-41
+41        android:label="@string/app_name"
+41-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:7:7-39
+42        android:roundIcon="@mipmap/ic_launcher_round"
+42-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:9:7-52
+43        android:theme="@style/AppTheme"
+43-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:11:7-38
+44        android:usesCleartextTraffic="true" >
+44-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/debug/AndroidManifest.xml:6:9-44
+45        <activity
+45-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:12:7-23:18
+46            android:name="com.nearpayconnectcoreexample.MainActivity"
+46-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:13:9-37
+47            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+47-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:15:9-118
+48            android:exported="true"
+48-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:18:9-32
+49            android:label="@string/app_name"
+49-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:14:9-41
+50            android:launchMode="singleTask"
+50-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:16:9-40
+51            android:windowSoftInputMode="adjustResize" >
+51-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:17:9-51
+52            <intent-filter>
+52-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:19:9-22:25
+53                <action android:name="android.intent.action.MAIN" />
+53-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:20:13-65
+53-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:20:21-62
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+55-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:21:13-73
+55-->/Users/ahmedkhalifa/Downloads/nearpay-connect-core/example/android/app/src/main/AndroidManifest.xml:21:23-70
+56            </intent-filter>
+57        </activity>
+58        <activity
+58-->[com.facebook.react:react-android:0.74.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/813da8d64613d3a874726517fb776e54/transformed/jetified-react-android-0.74.0-debug/AndroidManifest.xml:19:9-21:40
+59            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+59-->[com.facebook.react:react-android:0.74.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/813da8d64613d3a874726517fb776e54/transformed/jetified-react-android-0.74.0-debug/AndroidManifest.xml:20:13-77
+60            android:exported="false" />
+60-->[com.facebook.react:react-android:0.74.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/813da8d64613d3a874726517fb776e54/transformed/jetified-react-android-0.74.0-debug/AndroidManifest.xml:21:13-37
+61        <activity
+61-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:19:9-24:60
+62            android:name="io.nearpay.proxy.hiddenApp.ProxyCommunicationActivity"
+62-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:20:13-81
+63            android:configChanges="orientation|keyboardHidden"
+63-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:21:13-63
+64            android:exported="false"
+64-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:22:13-37
+65            android:screenOrientation="locked"
+65-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:23:13-47
+66            android:theme="@style/Theme.NearPay.Connect" />
+66-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:24:13-57
+67        <activity
+67-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:25:9-30:60
+68            android:name="io.nearpay.proxy.ui.ShowActivity"
+68-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:26:13-60
+69            android:configChanges="orientation|keyboardHidden"
+69-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:27:13-63
+70            android:exported="false"
+70-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:28:13-37
+71            android:screenOrientation="locked"
+71-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:29:13-47
+72            android:theme="@style/Theme.NearPay.Connect" />
+72-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:30:13-57
+73
+74        <service android:name="io.nearpay.proxy.connection.WebSocketConnectService" />
+74-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:32:9-87
+74-->[io.nearpay:nearpay-proxy-v2:0.0.9] /Users/ahmedkhalifa/.gradle/caches/transforms-4/8da86a4cdb14e573db1ed24b96f227b3/transformed/jetified-nearpay-proxy-v2-0.0.9/AndroidManifest.xml:32:18-84
+75
+76        <activity
+76-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:24:9-28:56
+77            android:name="io.nearpay.install.ui.InstallActivity"
+77-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:25:13-65
+78            android:configChanges="orientation|keyboardHidden"
+78-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:26:13-63
+79            android:exported="true"
+79-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:27:13-36
+80            android:theme="@style/Theme.NearPay.SDK" />
+80-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:28:13-53
+81
+82        <receiver android:name="io.nearpay.install.core.InstallManager$FirebaseInstallReceiver" />
+82-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:30:9-99
+82-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:30:19-96
+83
+84        <provider
+84-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:32:9-40:20
+85            android:name="io.nearpay.install.core.utils.ProxyFileProvider"
+85-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:33:13-75
+86            android:authorities="com.nearpayconnectcoreexample.proxy.provider"
+86-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:34:13-66
+87            android:exported="false"
+87-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:35:13-37
+88            android:grantUriPermissions="true" >
+88-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:36:13-47
+89            <meta-data
+89-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:37:13-39:58
+90                android:name="android.support.FILE_PROVIDER_PATHS"
+90-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:38:17-67
+91                android:resource="@xml/provider_paths" />
+91-->[io.nearpay:nearpay-plugin-install:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/a3f4325aedd32c7cd17d2e0d82c60b4d/transformed/jetified-nearpay-plugin-install-0.1/AndroidManifest.xml:39:17-55
+92        </provider>
+93
+94        <activity
+94-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:10:9-18:20
+95            android:name="io.nearpay.store.install.GoogleInstallActivity"
+95-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:11:13-74
+96            android:configChanges="orientation|keyboardHidden"
+96-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:12:13-63
+97            android:exported="false"
+97-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:13:13-37
+98            android:theme="@style/Theme.NearPay.SDK" >
+98-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:14:13-53
+99            <intent-filter>
+99-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:15:13-17:29
+100                <action android:name="io.nearpay.payment.sdk" />
+100-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:16:17-65
+100-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:16:25-62
+101            </intent-filter>
+102        </activity>
+103
+104        <receiver android:name="io.nearpay.store.install.GoogleInstallManager$StoreInstallReceiver" />
+104-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:20:9-103
+104-->[io.nearpay:nearpay-plugin-store:0.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/638bd0a80f975554aed91db9d44d0c75/transformed/jetified-nearpay-plugin-store-0.1/AndroidManifest.xml:20:19-100
+105
+106        <provider
+106-->[androidx.emoji2:emoji2:1.2.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+107            android:name="androidx.startup.InitializationProvider"
+107-->[androidx.emoji2:emoji2:1.2.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+108            android:authorities="com.nearpayconnectcoreexample.androidx-startup"
+108-->[androidx.emoji2:emoji2:1.2.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+109            android:exported="false" >
+109-->[androidx.emoji2:emoji2:1.2.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+110            <meta-data
+110-->[androidx.emoji2:emoji2:1.2.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+111                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+111-->[androidx.emoji2:emoji2:1.2.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+112                android:value="androidx.startup" />
+112-->[androidx.emoji2:emoji2:1.2.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+113            <meta-data
+113-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:36:13-38:52
+114                android:name="androidx.work.WorkManagerInitializer"
+114-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:37:17-68
+115                android:value="androidx.startup" />
+115-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:38:17-49
+116            <meta-data
+116-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/ahmedkhalifa/.gradle/caches/transforms-4/5a9789869c02a7026f0eeb98698ada8b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+117                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+117-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/ahmedkhalifa/.gradle/caches/transforms-4/5a9789869c02a7026f0eeb98698ada8b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+118                android:value="androidx.startup" />
+118-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/ahmedkhalifa/.gradle/caches/transforms-4/5a9789869c02a7026f0eeb98698ada8b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+119            <meta-data
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+120                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+121                android:value="androidx.startup" />
+121-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+122        </provider>
+123
+124        <service
+124-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:41:9-46:35
+125            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+125-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:42:13-88
+126            android:directBootAware="false"
+126-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:43:13-44
+127            android:enabled="@bool/enable_system_alarm_service_default"
+127-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:44:13-72
+128            android:exported="false" />
+128-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:45:13-37
+129        <service
+129-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:47:9-53:35
+130            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+130-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:48:13-84
+131            android:directBootAware="false"
+131-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:49:13-44
+132            android:enabled="@bool/enable_system_job_service_default"
+132-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:50:13-70
+133            android:exported="true"
+133-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:51:13-36
+134            android:permission="android.permission.BIND_JOB_SERVICE" />
+134-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:52:13-69
+135        <service
+135-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:54:9-59:35
+136            android:name="androidx.work.impl.foreground.SystemForegroundService"
+136-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:55:13-81
+137            android:directBootAware="false"
+137-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:56:13-44
+138            android:enabled="@bool/enable_system_foreground_service_default"
+138-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:57:13-77
+139            android:exported="false" />
+139-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:58:13-37
+140
+141        <receiver
+141-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:61:9-66:35
+142            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+142-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:62:13-88
+143            android:directBootAware="false"
+143-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:63:13-44
+144            android:enabled="true"
+144-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:64:13-35
+145            android:exported="false" />
+145-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:65:13-37
+146        <receiver
+146-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:67:9-77:20
+147            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+147-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:68:13-106
+148            android:directBootAware="false"
+148-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:69:13-44
+149            android:enabled="false"
+149-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:70:13-36
+150            android:exported="false" >
+150-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:71:13-37
+151            <intent-filter>
+151-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:73:13-76:29
+152                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+152-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:17-87
+152-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:25-84
+153                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+153-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:17-90
+153-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:25-87
+154            </intent-filter>
+155        </receiver>
+156        <receiver
+156-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:78:9-88:20
+157            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+157-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:79:13-104
+158            android:directBootAware="false"
+158-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:80:13-44
+159            android:enabled="false"
+159-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:81:13-36
+160            android:exported="false" >
+160-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:82:13-37
+161            <intent-filter>
+161-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:84:13-87:29
+162                <action android:name="android.intent.action.BATTERY_OKAY" />
+162-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:17-77
+162-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:25-74
+163                <action android:name="android.intent.action.BATTERY_LOW" />
+163-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:17-76
+163-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:25-73
+164            </intent-filter>
+165        </receiver>
+166        <receiver
+166-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:89:9-99:20
+167            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+167-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:90:13-104
+168            android:directBootAware="false"
+168-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:91:13-44
+169            android:enabled="false"
+169-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:92:13-36
+170            android:exported="false" >
+170-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:93:13-37
+171            <intent-filter>
+171-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:95:13-98:29
+172                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+172-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:17-83
+172-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:25-80
+173                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+173-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:17-82
+173-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:25-79
+174            </intent-filter>
+175        </receiver>
+176        <receiver
+176-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:100:9-109:20
+177            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+177-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:101:13-103
+178            android:directBootAware="false"
+178-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:102:13-44
+179            android:enabled="false"
+179-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:103:13-36
+180            android:exported="false" >
+180-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:104:13-37
+181            <intent-filter>
+181-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:106:13-108:29
+182                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+182-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:17-79
+182-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:25-76
+183            </intent-filter>
+184        </receiver>
+185        <receiver
+185-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:110:9-121:20
+186            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+186-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:111:13-88
+187            android:directBootAware="false"
+187-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:112:13-44
+188            android:enabled="false"
+188-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:113:13-36
+189            android:exported="false" >
+189-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:114:13-37
+190            <intent-filter>
+190-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:116:13-120:29
+191                <action android:name="android.intent.action.BOOT_COMPLETED" />
+191-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:117:17-79
+191-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:117:25-76
+192                <action android:name="android.intent.action.TIME_SET" />
+192-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:17-73
+192-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:25-70
+193                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+193-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:17-81
+193-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:25-78
+194            </intent-filter>
+195        </receiver>
+196        <receiver
+196-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:122:9-131:20
+197            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+197-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:123:13-99
+198            android:directBootAware="false"
+198-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:124:13-44
+199            android:enabled="@bool/enable_system_alarm_service_default"
+199-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:125:13-72
+200            android:exported="false" >
+200-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:126:13-37
+201            <intent-filter>
+201-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:128:13-130:29
+202                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+202-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:17-98
+202-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:25-95
+203            </intent-filter>
+204        </receiver>
+205        <receiver
+205-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:132:9-142:20
+206            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+206-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:133:13-78
+207            android:directBootAware="false"
+207-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:134:13-44
+208            android:enabled="true"
+208-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:135:13-35
+209            android:exported="true"
+209-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:136:13-36
+210            android:permission="android.permission.DUMP" >
+210-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:137:13-57
+211            <intent-filter>
+211-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:139:13-141:29
+212                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+212-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:17-88
+212-->[androidx.work:work-runtime:2.7.1] /Users/ahmedkhalifa/.gradle/caches/transforms-4/b8c9154b75dd75a8dd1c8b9058d1fa43/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:25-85
+213            </intent-filter>
+214        </receiver>
+215
+216        <uses-library
+216-->[androidx.window:window:1.0.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/9a1181731c9f628abd6a78d03e3aea95/transformed/jetified-window-1.0.0/AndroidManifest.xml:25:9-27:40
+217            android:name="androidx.window.extensions"
+217-->[androidx.window:window:1.0.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/9a1181731c9f628abd6a78d03e3aea95/transformed/jetified-window-1.0.0/AndroidManifest.xml:26:13-54
+218            android:required="false" />
+218-->[androidx.window:window:1.0.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/9a1181731c9f628abd6a78d03e3aea95/transformed/jetified-window-1.0.0/AndroidManifest.xml:27:13-37
+219        <uses-library
+219-->[androidx.window:window:1.0.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/9a1181731c9f628abd6a78d03e3aea95/transformed/jetified-window-1.0.0/AndroidManifest.xml:28:9-30:40
+220            android:name="androidx.window.sidecar"
+220-->[androidx.window:window:1.0.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/9a1181731c9f628abd6a78d03e3aea95/transformed/jetified-window-1.0.0/AndroidManifest.xml:29:13-51
+221            android:required="false" />
+221-->[androidx.window:window:1.0.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/9a1181731c9f628abd6a78d03e3aea95/transformed/jetified-window-1.0.0/AndroidManifest.xml:30:13-37
+222
+223        <receiver
+223-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+224            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+224-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+225            android:directBootAware="false"
+225-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+226            android:enabled="true"
+226-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+227            android:exported="true"
+227-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+228            android:permission="android.permission.DUMP" >
+228-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+229            <intent-filter>
+229-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+230                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+230-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+230-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+231            </intent-filter>
+232            <intent-filter>
+232-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+233                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+233-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+233-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+234            </intent-filter>
+235            <intent-filter>
+235-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+236                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+236-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+236-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+237            </intent-filter>
+238            <intent-filter>
+238-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+239                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+239-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+239-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ahmedkhalifa/.gradle/caches/transforms-4/09dbfc3693042d9c9c360467f4d51e9a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+240            </intent-filter>
+241        </receiver>
+242
+243        <service
+243-->[androidx.room:room-runtime:2.2.5] /Users/ahmedkhalifa/.gradle/caches/transforms-4/67af63c9bfd3ea95a5cd301e7b0e1bd8/transformed/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
+244            android:name="androidx.room.MultiInstanceInvalidationService"
+244-->[androidx.room:room-runtime:2.2.5] /Users/ahmedkhalifa/.gradle/caches/transforms-4/67af63c9bfd3ea95a5cd301e7b0e1bd8/transformed/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
+245            android:directBootAware="true"
+245-->[androidx.room:room-runtime:2.2.5] /Users/ahmedkhalifa/.gradle/caches/transforms-4/67af63c9bfd3ea95a5cd301e7b0e1bd8/transformed/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
+246            android:exported="false" />
+246-->[androidx.room:room-runtime:2.2.5] /Users/ahmedkhalifa/.gradle/caches/transforms-4/67af63c9bfd3ea95a5cd301e7b0e1bd8/transformed/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
+247
+248        <meta-data
+248-->[com.facebook.soloader:soloader:0.10.5] /Users/ahmedkhalifa/.gradle/caches/transforms-4/c5277b14eec9cc4a12d0fb10c9f8e27e/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:12:9-14:37
+249            android:name="com.facebook.soloader.enabled"
+249-->[com.facebook.soloader:soloader:0.10.5] /Users/ahmedkhalifa/.gradle/caches/transforms-4/c5277b14eec9cc4a12d0fb10c9f8e27e/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:13:13-57
+250            android:value="false" />
+250-->[com.facebook.soloader:soloader:0.10.5] /Users/ahmedkhalifa/.gradle/caches/transforms-4/c5277b14eec9cc4a12d0fb10c9f8e27e/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:14:13-34
+251    </application>
+252
+253</manifest>

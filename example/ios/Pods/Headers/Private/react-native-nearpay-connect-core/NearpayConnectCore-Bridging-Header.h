@@ -1,0 +1,1 @@
+../../../../../../ios/NearpayConnectCore-Bridging-Header.h

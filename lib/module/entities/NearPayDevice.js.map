@@ -1,0 +1,1 @@
+{"version":3,"names":["DeviceInfo","constructor","ip","port","name"],"sourceRoot":"../../../src","sources":["entities/NearPayDevice.tsx"],"mappings":"AAEA,eAAe,MAAMA,UAAU,CAAC;EAI9BC,WAAWA,CAACC,EAAU,EAAEC,IAAW,EAACC,IAAY,EAAC;IAC/C,IAAI,CAACF,EAAE,GAAGA,EAAE;IACZ,IAAI,CAACC,IAAI,GAAGA,IAAI;IAChB,IAAI,CAACC,IAAI,GAAGA,IAAI;EAClB;AACF","ignoreList":[]}

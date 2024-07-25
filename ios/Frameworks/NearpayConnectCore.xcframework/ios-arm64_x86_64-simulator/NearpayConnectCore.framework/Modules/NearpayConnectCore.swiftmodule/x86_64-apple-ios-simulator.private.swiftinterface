@@ -1,0 +1,901 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name NearpayConnectCore
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import Network
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct AnyJobResult<JobResponse> : NearpayConnectCore.RequestResult where JobResponse : Swift.Decodable, JobResponse : Swift.Encodable {
+  public let status: NearpayConnectCore.RequestStatus
+  public let response: JobResponse?
+  public let error: NearpayConnectCore.InternalTransactionError?
+  public typealias Error = NearpayConnectCore.InternalTransactionError
+  public typealias Response = JobResponse
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+final public class NearPay {
+  public init()
+  @objc deinit
+  final public func device(with ip: Swift.String, port: Swift.UInt16) -> NearpayConnectCore.NearPayDevice
+  final public func startDeviceDiscovery(handler: @escaping NearpayConnectCore.DeviceListHandler)
+  final public func stopDeviceDiscovery()
+}
+@_hasMissingDesignatedInitializers final public class NearPayUser {
+  final public var token: NearpayConnectCore.UserToken {
+    get
+  }
+  final public var info: NearpayConnectCore.UserInfo? {
+    get
+  }
+  final public var isLoggedIn: Swift.Bool {
+    get
+  }
+  @objc deinit
+  final public func getTerminalList(dismissible: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.MerchantListQueryHandler)
+  final public func getInfo(dismissible: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.UserInfoQueryHandler)
+  final public func disconnectFromCurrentTerminal(dismissible: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.TerminalDisconnectionHandler)
+}
+public typealias LoginHandler = (NearpayConnectCore.LoginResult) -> Swift.Void
+public typealias LogoutHandler = (NearpayConnectCore.LogoutResult) -> Swift.Void
+public typealias LoginResult = Swift.Result<NearpayConnectCore.AuthenticationObjects, NearpayConnectCore.GeneralAuthenticationError>
+public typealias LogoutResult = Swift.Result<Swift.Bool, NearpayConnectCore.GeneralAuthenticationError>
+public typealias VerificationHandler = (NearpayConnectCore.VerificationResult) -> Swift.Void
+public typealias VerificationResult = Swift.Result<NearpayConnectCore.NearPayUser, NearpayConnectCore.GeneralAuthenticationError>
+public typealias OTPSendingHandler = (NearpayConnectCore.OTPSendingResult) -> Swift.Void
+public typealias OTPSendingResult = Swift.Result<Swift.Bool, NearpayConnectCore.GeneralAuthenticationError>
+public typealias TerminalConnectionHandler = (NearpayConnectCore.TerminalConnectionResult) -> Swift.Void
+public typealias TerminalConnectionResult = Swift.Result<NearpayConnectCore.NearPayTerminal, NearpayConnectCore.GeneralAuthenticationError>
+public typealias UserQueryHandler = (NearpayConnectCore.UserQueryResult) -> Swift.Void
+public typealias UserQueryResult = Swift.Result<NearpayConnectCore.NearPayUser, NearpayConnectCore.GeneralAuthenticationError>
+public struct UserTerminal : Swift.Codable, Swift.Hashable {
+  public let name: Swift.String?
+  public let tid: NearpayConnectCore.TerminalID
+  public let uuid: Swift.String
+  public let busy: Swift.Bool?
+  public let is_locked: Swift.Bool?
+  public let has_profile: Swift.Bool?
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: NearpayConnectCore.UserTerminal, b: NearpayConnectCore.UserTerminal) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct UserMerchant : Swift.Codable {
+  public let name: NearpayConnectCore.LocalizationField
+  public let terminals: [NearpayConnectCore.UserTerminal]
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ReconciliationReceipt : Swift.Codable {
+  public let id: Swift.String
+  public let date: Swift.String?
+  public let time: Swift.String?
+  public let is_balanced: NearpayConnectCore.LabelField<Swift.Bool>?
+  public let details: NearpayConnectCore.ReconciliationReceipt.ReconciliationDetails?
+  public let schemes: [NearpayConnectCore.ReconciliationReceipt.ReconciliationSchemes]?
+  public let currency: NearpayConnectCore.LocalizationField?
+  public let qr_code: Swift.String
+  public struct ReconciliationDetails : Swift.Codable {
+    public let purchase: NearpayConnectCore.ReconciliationReceipt.ReconciliationLabelField?
+    public let refund: NearpayConnectCore.ReconciliationReceipt.ReconciliationLabelField?
+    public let purchase_reversal: NearpayConnectCore.ReconciliationReceipt.ReconciliationLabelField?
+    public let refund_reversal: NearpayConnectCore.ReconciliationReceipt.ReconciliationLabelField?
+    public let total: NearpayConnectCore.ReconciliationReceipt.ReconciliationLabelField?
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct ReconciliationSchemes : Swift.Codable {
+    public let name: NearpayConnectCore.LabelField<Swift.String>?
+    public let pos: NearpayConnectCore.ReconciliationReceipt.ReconciliationSchemesDetails?
+    public let host: NearpayConnectCore.ReconciliationReceipt.ReconciliationSchemesDetails?
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct ReconciliationSchemesDetails : Swift.Codable {
+    public let debit: NearpayConnectCore.ReconciliationReceipt.ReconciliationLabelField?
+    public let credit: NearpayConnectCore.ReconciliationReceipt.ReconciliationLabelField?
+    public let total: NearpayConnectCore.ReconciliationReceipt.ReconciliationLabelField?
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct ReconciliationLabelField : Swift.Codable {
+    public let label: NearpayConnectCore.LocalizationField?
+    public let total: Swift.String?
+    public let count: Swift.Int?
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public let merchant: NearpayConnectCore.Merchant
+  public let card_acceptor_terminal_id: Swift.String
+  public let system_trace_audit_number: Swift.String
+  public let pos_software_version_number: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias MessageID = Swift.String
+public typealias SuccessHandler = (Swift.Bool) -> Swift.Void
+public typealias NetworkResponseHandler = (NearpayConnectCore.NetworkResult) -> Swift.Void
+public typealias NetworkResult = Swift.Result<NearpayConnectCore.ResponseMessage, NearpayConnectCore.MessageTransportError>
+public typealias ResponseMessage = Foundation.Data
+public struct PurchaseResponse : NearpayConnectCore.StatusTransactionResponse {
+  public let status: NearpayConnectCore.TransactionStatus
+  public let isNewTransaction: Swift.Bool?
+  public let transactionReceipts: [NearpayConnectCore.TransactionReceipt]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RefundResponse : NearpayConnectCore.StatusTransactionResponse {
+  public let status: NearpayConnectCore.TransactionStatus
+  public let transactionReceipts: [NearpayConnectCore.TransactionReceipt]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ReversalResponse : NearpayConnectCore.TransactionResponse {
+  public let status: NearpayConnectCore.ReversalStatus
+  public let transactionReceipts: [NearpayConnectCore.TransactionReceipt]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ReconciliationResponse : Swift.Codable {
+  public let status: NearpayConnectCore.ReconciliationStatus
+  public let reconcileReceipt: NearpayConnectCore.ReconciliationReceipt?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct JobCancellationResponse : Swift.Codable {
+  public let jobID: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol TransactionResponse : Swift.Decodable, Swift.Encodable {
+  var transactionReceipts: [NearpayConnectCore.TransactionReceipt]? { get }
+}
+public protocol StatusTransactionResponse : NearpayConnectCore.TransactionResponse {
+  var status: NearpayConnectCore.TransactionStatus { get }
+}
+public struct ReconciliationList : Swift.Codable {
+  public let total: Swift.Int
+  public let reconciliations: [NearpayConnectCore.Reconciliation]
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Reconciliation : Swift.Codable {
+  public let id: Swift.String
+  public let date: Swift.String
+  public let time: Swift.String
+  public let is_balanced: NearpayConnectCore.LabelField<Swift.Bool>
+  public let total: Swift.String
+  public let currency: NearpayConnectCore.LocalizationField
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LabelField<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
+  public let label: NearpayConnectCore.LocalizationField?
+  public let value: T?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LocalizationField : Swift.Codable {
+  public let arabic: Swift.String?
+  public let english: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TransactionList : Swift.Codable {
+  public let count: Swift.Int
+  public let transactions: [NearpayConnectCore.Transaction]
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Transaction : Swift.Codable {
+  public let uuid: Swift.String
+  public let scheme: Swift.String
+  public let pan: Swift.String
+  public let amount_authorized: Swift.String
+  public let currency: NearpayConnectCore.LocalizationField
+  public let transaction_type: NearpayConnectCore.Transaction.TransactionType
+  public let is_approved: Swift.Bool
+  public let is_reversed: Swift.Bool
+  public let start_date: Swift.String
+  public let start_time: Swift.String
+  public let customer_reference_number: Swift.String?
+  public enum TransactionType : Swift.String, Swift.Codable {
+    case undefined
+    case purchase
+    case cash
+    case cashDisbursement
+    case purchaseWithCashback
+    case refund
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Merchant : Swift.Codable {
+  public let id: Swift.String?
+  public let name: NearpayConnectCore.LocalizationField?
+  public let address: NearpayConnectCore.LocalizationField?
+  public let category_code: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct NameField<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
+  public let name: NearpayConnectCore.LocalizationField?
+  public let id: T?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@frozen public enum GeneralQueryError<QueryError> : Swift.Error where QueryError : Swift.Error {
+  case transport(NearpayConnectCore.MessageTransportError)
+  case query(QueryError?)
+}
+public enum TransactionQueryError : NearpayConnectCore.DescriptiveError {
+  case busy
+  case authenticationFailed(reason: Swift.String? = nil)
+  case invalidStatus(reason: Swift.String? = nil)
+  case serverError(reason: Swift.String? = nil)
+  public var description: Swift.String {
+    get
+  }
+}
+public struct InternalTransactionQueryError : NearpayConnectCore.RequestError {
+  public typealias PublicError = NearpayConnectCore.TransactionQueryError
+  public var type: NearpayConnectCore.TransactionQueryErrorType
+  public var message: Swift.String?
+  public var transformed: NearpayConnectCore.InternalTransactionQueryError.PublicError? {
+    get
+  }
+  public typealias ErrorType = NearpayConnectCore.TransactionQueryErrorType
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum TransactionQueryErrorType : Swift.String, Swift.Codable {
+  case busy
+  case authenticationFailed
+  case invalidStatus
+  case serverError
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum OperationType : Swift.String, Swift.Codable {
+  case ping
+  case pong
+  case pause
+  case resume
+  case authenticate
+  case connectToTerminal
+  case disconnectFromTerminal
+  case verify
+  case userInfo
+  case terminalList
+  case forget
+  case logout
+  case purchase
+  case refund
+  case reverse
+  case reconcile
+  case transactionList
+  case reconciliationList
+  case getTransaction
+  case getReconciliation
+  case cancel
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct DeviceStatus : Swift.Equatable {
+  public static func == (lhs: NearpayConnectCore.DeviceStatus, rhs: NearpayConnectCore.DeviceStatus) -> Swift.Bool
+  public var appStatus: NearpayConnectCore.AppStatus?
+  public var deviceRequirement: NearpayConnectCore.DeviceRequirement?
+  public var batteryInfo: NearpayConnectCore.BatteryInfo?
+}
+@frozen public enum AppStatus : Swift.String, Swift.Codable {
+  case foreground
+  case background
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct BatteryInfo : Swift.Equatable {
+  public static func == (a: NearpayConnectCore.BatteryInfo, b: NearpayConnectCore.BatteryInfo) -> Swift.Bool
+}
+@frozen public enum DeviceRequirement : Swift.String, NearpayConnectCore.DescriptiveError {
+  case needsPermissions
+  case needsToUpdatePaymentPlugIn
+  case needsToInstallPaymentPlugIn
+  case needsToBeCompatible
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@frozen public enum JobStatus : Swift.String {
+  case created
+  case processing
+  case failed
+  case completed
+  case cancelled
+  case cancelAcknowledged
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@frozen public enum JobType : Swift.String {
+  case purchase
+  case refund
+  case reverse
+  case reconcile
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol AnyJob {
+  associatedtype Result : NearpayConnectCore.RequestResult
+  associatedtype Payload : NearpayConnectCore.JobPayload
+  var id: NearpayConnectCore.JobID { get }
+  var type: NearpayConnectCore.JobType { get }
+  var timeout: Foundation.TimeInterval { get }
+  var status: NearpayConnectCore.JobStatus { get }
+  var onStatusChange: NearpayConnectCore.JobStatusHandler? { get set }
+  var onEvent: NearpayConnectCore.ReadingEventHandler? { get set }
+  func start(handler: @escaping NearpayConnectCore.JobStartHandler<Self.Result.Response>)
+  func cancel(handler: @escaping NearpayConnectCore.JobCancellationHandler<NearpayConnectCore.JobCancellationResult.Response>)
+}
+@_hasMissingDesignatedInitializers final public class NearPayJob<Payload, Result> : NearpayConnectCore.AnyJob where Payload : NearpayConnectCore.JobPayload, Result : NearpayConnectCore.RequestResult {
+  final public var id: NearpayConnectCore.JobID {
+    get
+  }
+  final public var type: NearpayConnectCore.JobType {
+    get
+  }
+  final public var timeout: Foundation.TimeInterval {
+    get
+  }
+  final public var onEvent: NearpayConnectCore.ReadingEventHandler?
+  final public var onStatusChange: NearpayConnectCore.JobStatusHandler?
+  final public var status: NearpayConnectCore.JobStatus {
+    get
+    set
+  }
+  final public var isInFlight: Swift.Bool {
+    get
+  }
+  final public var isReady: Swift.Bool {
+    get
+  }
+  final public var isProcessing: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+extension NearpayConnectCore.NearPayJob {
+  final public func start(handler: @escaping NearpayConnectCore.JobStartHandler<Result.Response>)
+  final public func cancel(handler: @escaping NearpayConnectCore.JobCancellationHandler<NearpayConnectCore.CancellationResponse>)
+}
+public struct PurchasePayload : NearpayConnectCore.TransactionJobPayload {
+  public let jobID: NearpayConnectCore.JobID
+  public let customerReferenceNumber: Swift.String
+  public let amount: Swift.Double
+  public let enableReceiptUi: Swift.Bool
+  public let enableUiDismiss: Swift.Bool?
+  public let enableReversal: Swift.Bool
+  public let finishTimeOut: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RefundPayload : NearpayConnectCore.TransactionJobPayload, NearpayConnectCore.ReferenceJobPayload {
+  public let jobID: NearpayConnectCore.JobID
+  public let originalJobID: NearpayConnectCore.JobID
+  public let customerReferenceNumber: Swift.String
+  public let amount: Swift.Double
+  public let enableEditableRefundAmountUi: Swift.Bool
+  public let enableReceiptUi: Swift.Bool
+  public let enableUiDismiss: Swift.Bool?
+  public let enableReversal: Swift.Bool
+  public let finishTimeOut: Swift.Int
+  public let adminPin: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ReversalPayload : NearpayConnectCore.ReferenceJobPayload {
+  public let jobID: NearpayConnectCore.JobID
+  public let originalJobID: NearpayConnectCore.JobID
+  public let enableReceiptUi: Swift.Bool
+  public let enableUiDismiss: Swift.Bool?
+  public let finishTimeOut: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ReconciliationPayload : NearpayConnectCore.JobPayload {
+  public let jobID: NearpayConnectCore.JobID
+  public let enableReceiptUi: Swift.Bool
+  public let enableUiDismiss: Swift.Bool?
+  public let finishTimeOut: Swift.Int
+  public let adminPin: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct JobCancellationPayload : NearpayConnectCore.JobPayload {
+  public let jobID: NearpayConnectCore.JobID
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol JobPayload : Swift.Decodable, Swift.Encodable {
+  var jobID: NearpayConnectCore.JobID { get }
+}
+public protocol ReferenceJobPayload : NearpayConnectCore.JobPayload {
+  var originalJobID: NearpayConnectCore.JobID { get }
+}
+public protocol TransactionJobPayload : NearpayConnectCore.JobPayload {
+  var customerReferenceNumber: Swift.String { get }
+  var amount: Swift.Double { get }
+}
+public struct UserInfo : Swift.Codable {
+  public let name: Swift.String
+  public let mobile: Swift.String?
+  public let email: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TransactionQueryResponse : NearpayConnectCore.TransactionResponse {
+  public let transactionReceipts: [NearpayConnectCore.TransactionReceipt]?
+  public let message: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ReconciliationQueryResponse : Swift.Codable {
+  public let receipt: NearpayConnectCore.ReconciliationReceipt?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TransactionListResponse : Swift.Codable {
+  public let transactionList: NearpayConnectCore.TransactionList?
+  public let message: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ReconciliationListResponse : Swift.Codable {
+  public let reconciliationList: NearpayConnectCore.ReconciliationList?
+  public let message: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum ReadingEvent : Swift.String {
+  case initializing
+  case reading
+  case processing
+  case online
+  case approved
+  case pin
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@frozen public enum ReadingError : Swift.Error {
+  case general
+  case transport(NearpayConnectCore.MessageTransportError)
+}
+public typealias JobStartHandler<JobResponse> = (Swift.Result<JobResponse, NearpayConnectCore.GeneralJobError>) -> Swift.Void where JobResponse : Swift.Decodable, JobResponse : Swift.Encodable
+public typealias JobCancellationHandler<JobResponse> = (Swift.Result<JobResponse, NearpayConnectCore.GeneralCancellationError>) -> Swift.Void where JobResponse : Swift.Decodable, JobResponse : Swift.Encodable
+public typealias PurchaseJob = NearpayConnectCore.NearPayJob<NearpayConnectCore.PurchasePayload, NearpayConnectCore.TransactionResult>
+public typealias RefundJob = NearpayConnectCore.NearPayJob<NearpayConnectCore.RefundPayload, NearpayConnectCore.RefundResult>
+public typealias ReversalJob = NearpayConnectCore.NearPayJob<NearpayConnectCore.ReversalPayload, NearpayConnectCore.ReversalResult>
+public typealias ReconciliationJob = NearpayConnectCore.NearPayJob<NearpayConnectCore.ReconciliationPayload, NearpayConnectCore.ReconciliationResult>
+public typealias TransactionResult = NearpayConnectCore.AnyJobResult<NearpayConnectCore.PurchaseResponse>
+public typealias RefundResult = NearpayConnectCore.AnyJobResult<NearpayConnectCore.RefundResponse>
+public typealias ReversalResult = NearpayConnectCore.AnyJobResult<NearpayConnectCore.ReversalResponse>
+public typealias ReconciliationResult = NearpayConnectCore.AnyJobResult<NearpayConnectCore.ReconciliationResponse>
+public typealias JobCancellationResult = NearpayConnectCore.AnyRequestResult<NearpayConnectCore.JobCancellationResponse, NearpayConnectCore.InternalJobCancellationError>
+public typealias CancellationResponse = NearpayConnectCore.JobCancellationResult.Response
+public typealias CancellationError = NearpayConnectCore.JobCancellationResult.Error
+public typealias ReadingEventHandler = (Swift.Result<NearpayConnectCore.ReadingEvent, NearpayConnectCore.ReadingError>) -> Swift.Void
+public typealias JobStatusHandler = ((NearpayConnectCore.JobStatus) -> Swift.Void)
+public typealias JobID = Swift.String
+@objc @_hasMissingDesignatedInitializers final public class NearPayDevice : ObjectiveC.NSObject {
+  public struct Info {
+    public let ip: Swift.String
+    public let port: Swift.UInt16
+    public var name: Swift.String?
+    public init(ip: Swift.String, port: Swift.UInt16, name: Swift.String? = nil)
+  }
+  final public var onLogout: ((NearpayConnectCore.UserToken?, NearpayConnectCore.TerminalToken?, NearpayConnectCore.LogoutReason) -> ())?
+  final public var onTerminalDisconnect: ((NearpayConnectCore.TerminalToken?) -> Swift.Void)?
+  final public var onPause: (() -> Swift.Void)?
+  final public var onResume: (() -> Swift.Void)?
+  final public var onDisconnect: ((NearpayConnectCore.DisconnectionReason) -> Swift.Void)?
+  final public var onReconnectSuggestion: (() -> Swift.Void)?
+  final public var onStatusChange: ((NearpayConnectCore.DeviceStatus) -> Swift.Void)?
+  final public var info: NearpayConnectCore.NearPayDevice.Info {
+    get
+  }
+  @objc deinit
+  final public func connect(timeout: Foundation.TimeInterval = 1, handler: @escaping NearpayConnectCore.SuccessHandler)
+  final public func disconnect()
+  final public func ping(timeout: Foundation.TimeInterval = 1, handler: @escaping NearpayConnectCore.SuccessHandler)
+  final public func login(with loginMethod: NearpayConnectCore.LoginMethod, dismissible: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.LoginHandler)
+  final public func logout(dismissible: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.LogoutHandler)
+  final public func connectToTerminal(with id: NearpayConnectCore.TerminalID, userToken: NearpayConnectCore.UserToken, dismissible: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.TerminalConnectionHandler)
+  final public func authentication(with loginMethod: NearpayConnectCore.LoginMethod) -> NearpayConnectCore.NearPayAuthentication
+  final public func user(with token: NearpayConnectCore.UserToken) -> NearpayConnectCore.NearPayUser
+  final public func terminal(with token: NearpayConnectCore.TerminalToken, userToken: NearpayConnectCore.UserToken, isJWTAuthenticated: Swift.Bool) -> NearpayConnectCore.NearPayTerminal
+  final public func clearTerminal()
+  final public func forceLogout()
+}
+extension NearpayConnectCore.NearPayDevice : Foundation.NetServiceDelegate {
+  @objc final public func netServiceDidResolveAddress(_ sender: Foundation.NetService)
+  @objc final public func netService(_ sender: Foundation.NetService, didNotResolve errorDict: [Swift.String : Foundation.NSNumber])
+  @objc final public func netServiceWillResolve(_ sender: Foundation.NetService)
+}
+public typealias UserToken = Swift.String
+public typealias MerchantListQueryHandler = (NearpayConnectCore.MerchantListQueryResult) -> Swift.Void
+public typealias MerchantListQueryResult = Swift.Result<[NearpayConnectCore.UserMerchant], NearpayConnectCore.GeneralAuthenticationError>
+public typealias UserInfoQueryHandler = (NearpayConnectCore.UserInfoQueryResult) -> Swift.Void
+public typealias UserInfoQueryResult = Swift.Result<NearpayConnectCore.UserInfo, NearpayConnectCore.GeneralAuthenticationError>
+@frozen public enum GeneralJobError : Swift.Error {
+  case transport(NearpayConnectCore.MessageTransportError)
+  case job(NearpayConnectCore.TransactionError?)
+}
+@frozen public enum GeneralCancellationError : Swift.Error {
+  case transport(NearpayConnectCore.MessageTransportError)
+  case cancel(NearpayConnectCore.JobCancellationError?)
+}
+public enum TransactionError : NearpayConnectCore.DescriptiveError {
+  case busy
+  case rejected(reason: Swift.String? = nil)
+  case authenticationFailed(reason: Swift.String? = nil)
+  case invalidStatus(reason: Swift.String? = nil)
+  case serverError(reason: Swift.String? = nil)
+  case invalidRequest(reason: Swift.String? = nil)
+  case invalidAdminPin
+  case cancelled
+  case requestCancelled
+  case cancelledWithReversal
+  public var description: Swift.String {
+    get
+  }
+}
+public struct InternalTransactionError : NearpayConnectCore.RequestError {
+  public typealias PublicError = NearpayConnectCore.TransactionError
+  public var type: NearpayConnectCore.TransactionErrorType
+  public var message: Swift.String?
+  public var transformed: NearpayConnectCore.InternalTransactionError.PublicError? {
+    get
+  }
+  public typealias ErrorType = NearpayConnectCore.TransactionErrorType
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum TransactionErrorType : Swift.String, Swift.Codable {
+  case busy
+  case rejected
+  case authenticationFailed
+  case invalidStatus
+  case serverError
+  case invalidRequest
+  case invalidAdminPin
+  case cancelled
+  case requestCancelled
+  case cancelledWithReversal
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum JobCancellationError : NearpayConnectCore.DescriptiveError, Swift.Codable {
+  case serverError(reason: Swift.String? = nil)
+  case serviceDisconnected
+  public var description: Swift.String {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct InternalJobCancellationError : NearpayConnectCore.RequestError {
+  public typealias PublicError = NearpayConnectCore.JobCancellationError
+  public var type: NearpayConnectCore.JobCancellationType
+  public var message: Swift.String?
+  public var transformed: NearpayConnectCore.InternalJobCancellationError.PublicError? {
+    get
+  }
+  public typealias ErrorType = NearpayConnectCore.JobCancellationType
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum JobCancellationType : Swift.String, Swift.Codable {
+  case serverError
+  case serviceDisconnected
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MessageTransportError : NearpayConnectCore.DescriptiveError {
+  case failedToBeSent(reason: Swift.String)
+  case failedToBeReceived(reason: Swift.String)
+  case failedToBeParsed(reason: Swift.String)
+  case timedOut
+  public var description: Swift.String {
+    get
+  }
+}
+public enum DisconnectionReason : NearpayConnectCore.DescriptiveError {
+  case peerClosed
+  case peerDisconnected
+  case error((any Swift.Error)?)
+  case manual
+  public var description: Swift.String {
+    get
+  }
+}
+public enum LoginMethod {
+  case mobile(Swift.String)
+  case email(Swift.String)
+  case jwt(Swift.String)
+}
+public typealias DeviceListHandler = (([NearpayConnectCore.NearPayDevice]) -> Swift.Void)
+public typealias TerminalToken = Swift.String
+public typealias TerminalID = Swift.String
+public typealias QueryHandler<QueryResponse, QueryError> = (Swift.Result<QueryResponse, NearpayConnectCore.GeneralQueryError<QueryError>>) -> Swift.Void where QueryResponse : Swift.Decodable, QueryResponse : Swift.Encodable, QueryError : Swift.Error
+public typealias TransactionQueryHandler = NearpayConnectCore.QueryHandler<NearpayConnectCore.TransactionQueryResponse, NearpayConnectCore.TransactionQueryError>
+public typealias ReconciliationQueryHandler = NearpayConnectCore.QueryHandler<NearpayConnectCore.ReconciliationQueryResponse, NearpayConnectCore.TransactionQueryError>
+public typealias TransactionListQueryHandler = NearpayConnectCore.QueryHandler<NearpayConnectCore.TransactionListResponse, NearpayConnectCore.TransactionQueryError>
+public typealias ReconciliationListQueryHandler = NearpayConnectCore.QueryHandler<NearpayConnectCore.ReconciliationListResponse, NearpayConnectCore.TransactionQueryError>
+public typealias TerminalDisconnectionHandler = (NearpayConnectCore.TerminalDisconnectionResult) -> Swift.Void
+public typealias TerminalDisconnectionResult = Swift.Result<Swift.Bool, NearpayConnectCore.GeneralAuthenticationError>
+@frozen public enum TransactionStatus : Swift.String, Swift.Codable {
+  case approved
+  case declined
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@frozen public enum ReversalStatus : Swift.String, Swift.Codable {
+  case finished
+  case rejected
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@frozen public enum ReconciliationStatus : Swift.String, Swift.Codable {
+  case balanced
+  case notBalanced
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class NearPayAuthentication {
+  @objc deinit
+  final public func verify(with otp: Swift.String, dismissible: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.VerificationHandler)
+  final public func sendOTP(dismissible: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.OTPSendingHandler)
+}
+public struct AuthenticationObjects {
+  public let user: NearpayConnectCore.NearPayUser?
+  public let terminal: NearpayConnectCore.NearPayTerminal?
+  public let authentication: NearpayConnectCore.NearPayAuthentication?
+  public init(user: NearpayConnectCore.NearPayUser?, terminal: NearpayConnectCore.NearPayTerminal?, authentication: NearpayConnectCore.NearPayAuthentication?)
+}
+@frozen public enum GeneralAuthenticationError : Swift.Error {
+  case transport(NearpayConnectCore.MessageTransportError)
+  case auth(NearpayConnectCore.AuthenticationError?)
+}
+public enum AuthenticationError : NearpayConnectCore.DescriptiveError {
+  case busy
+  case sessionExpired(reason: Swift.String? = nil)
+  case serverError(reason: Swift.String? = nil)
+  case invalidStatus(reason: Swift.String? = nil)
+  case unsupportedRequest
+  case notLoggedIn
+  case requestCancelled
+  public var description: Swift.String {
+    get
+  }
+}
+public enum LogoutReason : Swift.String, NearpayConnectCore.DescriptiveError {
+  case busy
+  case terminalRequested
+  case manual
+  case forced
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct TransactionReceipt : Swift.Codable {
+  public let receipt_id: Swift.String?
+  public let transaction_uuid: Swift.String?
+  public let merchant: NearpayConnectCore.Merchant?
+  public let start_date: Swift.String?
+  public let start_time: Swift.String?
+  public let card_scheme_sponsor: Swift.String?
+  public let tid: Swift.String?
+  public let system_trace_audit_number: Swift.String?
+  public let pos_software_version_number: Swift.String?
+  public let retrieval_reference_number: Swift.String?
+  public let card_scheme: NearpayConnectCore.NameField<Swift.String>?
+  public let transaction_type: NearpayConnectCore.NameField<Swift.String>?
+  public let pan: Swift.String?
+  public let card_expiration: Swift.String?
+  public let amount_authorized: NearpayConnectCore.LabelField<Swift.String>?
+  public let amount_other: NearpayConnectCore.LabelField<Swift.String>?
+  public let currency: NearpayConnectCore.LocalizationField?
+  public let status_message: NearpayConnectCore.LocalizationField?
+  public let is_approved: Swift.Bool?
+  public let is_refunded: Swift.Bool?
+  public let is_reversed: Swift.Bool?
+  public let approval_code: NearpayConnectCore.LabelField<Swift.String>?
+  public let verification_method: NearpayConnectCore.LocalizationField?
+  public let end_date: Swift.String?
+  public let end_time: Swift.String?
+  public let receipt_line_one: NearpayConnectCore.LocalizationField?
+  public let receipt_line_two: NearpayConnectCore.LocalizationField?
+  public let thanks_message: NearpayConnectCore.LocalizationField?
+  public let save_receipt_message: NearpayConnectCore.LocalizationField?
+  public let entry_mode: Swift.String?
+  public let action_code: Swift.String?
+  public let application_identifier: Swift.String?
+  public let terminal_verification_result: Swift.String?
+  public let transaction_state_information: Swift.String?
+  public let cardholader_verfication_result: Swift.String?
+  public let cryptogram_information_data: Swift.String?
+  public let application_cryptogram: Swift.String?
+  public let kernel_id: Swift.String?
+  public let payment_account_reference: Swift.String?
+  public let pan_suffix: Swift.String?
+  public let created_at: Swift.String?
+  public let updated_at: Swift.String?
+  public let qr_code: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias CodableError = Swift.Codable & Swift.Error
+public protocol RequestResult : Swift.Decodable, Swift.Encodable {
+  typealias GeneralRequestResult = Swift.Result<Self.Response, NearpayConnectCore.GeneralRequestError<Self.Error.PublicError>>
+  associatedtype Response : Swift.Decodable, Swift.Encodable
+  associatedtype Error : NearpayConnectCore.RequestError
+  var status: NearpayConnectCore.RequestStatus { get }
+  var response: Self.Response? { get }
+  var error: Self.Error? { get }
+  func handled(for operation: NearpayConnectCore.OperationType) -> Self.GeneralRequestResult
+}
+public enum GeneralRequestError<GeneralError> : Swift.Error where GeneralError : NearpayConnectCore.DescriptiveError {
+  case transport(NearpayConnectCore.MessageTransportError)
+  case general(GeneralError?)
+}
+extension NearpayConnectCore.RequestResult {
+  public func handled(for operation: NearpayConnectCore.OperationType) -> Self.GeneralRequestResult
+}
+public enum RequestStatus : Swift.String, Swift.Codable {
+  case success
+  case failure
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol RequestError : Swift.Decodable, Swift.Encodable, Swift.Error {
+  associatedtype ErrorType : Swift.Decodable, Swift.Encodable
+  associatedtype PublicError : NearpayConnectCore.DescriptiveError
+  var type: Self.ErrorType { get }
+  var message: Swift.String? { get }
+  var transformed: Self.PublicError? { get }
+}
+public protocol DescriptiveError : Swift.Error {
+  var description: Swift.String { get }
+}
+public struct AnyRequestResult<Response, Error> : NearpayConnectCore.RequestResult where Response : Swift.Decodable, Response : Swift.Encodable, Error : NearpayConnectCore.RequestError {
+  public let status: NearpayConnectCore.RequestStatus
+  public let response: Response?
+  public let error: Error?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers final public class NearPayTerminal {
+  final public var token: NearpayConnectCore.TerminalToken
+  final public var userToken: NearpayConnectCore.UserToken
+  final public var isConnected: Swift.Bool {
+    get
+  }
+  @objc deinit
+  final public func purchase(jobID: NearpayConnectCore.JobID, customerReferenceNumber: Swift.String, amount: Swift.Double, enableReceiptUi: Swift.Bool = true, enableReversal: Swift.Bool = true, dismissible: Swift.Bool = false, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval) -> NearpayConnectCore.PurchaseJob
+  final public func refund(jobID: NearpayConnectCore.JobID, originalJobID: NearpayConnectCore.JobID, amount: Swift.Double, customerReferenceNumber: Swift.String, adminPin: Swift.String?, enableEditableRefundAmountUi: Swift.Bool = true, enableReceiptUi: Swift.Bool = true, enableReversal: Swift.Bool = true, dismissible: Swift.Bool = false, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval) -> NearpayConnectCore.RefundJob
+  final public func reverse(jobID: NearpayConnectCore.JobID, originalJobID: NearpayConnectCore.JobID, enableReceiptUi: Swift.Bool = true, dismissible: Swift.Bool = false, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval) -> NearpayConnectCore.ReversalJob
+  final public func reconcile(jobID: NearpayConnectCore.JobID, adminPin: Swift.String?, enableReceiptUi: Swift.Bool = true, dismissible: Swift.Bool = false, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval) -> NearpayConnectCore.ReconciliationJob
+  final public func getTransaction(with jobID: NearpayConnectCore.JobID, enableReceiptUi: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.TransactionQueryHandler)
+  final public func getReconciliation(with jobID: NearpayConnectCore.JobID, enableReceiptUi: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.ReconciliationQueryHandler)
+  final public func getTransactionList(startDate: Foundation.Date, endDate: Foundation.Date, page: Swift.Int, pageSize: Swift.Int, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.TransactionListQueryHandler)
+  final public func getReconciliationList(startDate: Foundation.Date, endDate: Foundation.Date, page: Swift.Int, pageSize: Swift.Int, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.ReconciliationListQueryHandler)
+  final public func disconnect(dismissable: Swift.Bool = true, terminalTimeout: Swift.Int = 6, timeout: Foundation.TimeInterval, handler: @escaping NearpayConnectCore.TerminalDisconnectionHandler)
+}
+extension NearpayConnectCore.Transaction.TransactionType : Swift.Equatable {}
+extension NearpayConnectCore.Transaction.TransactionType : Swift.Hashable {}
+extension NearpayConnectCore.Transaction.TransactionType : Swift.RawRepresentable {}
+extension NearpayConnectCore.TransactionQueryErrorType : Swift.Equatable {}
+extension NearpayConnectCore.TransactionQueryErrorType : Swift.Hashable {}
+extension NearpayConnectCore.TransactionQueryErrorType : Swift.RawRepresentable {}
+extension NearpayConnectCore.OperationType : Swift.Equatable {}
+extension NearpayConnectCore.OperationType : Swift.Hashable {}
+extension NearpayConnectCore.OperationType : Swift.RawRepresentable {}
+extension NearpayConnectCore.AppStatus : Swift.Equatable {}
+extension NearpayConnectCore.AppStatus : Swift.Hashable {}
+extension NearpayConnectCore.AppStatus : Swift.RawRepresentable {}
+extension NearpayConnectCore.AppStatus : Swift.Sendable {}
+extension NearpayConnectCore.DeviceRequirement : Swift.Equatable {}
+extension NearpayConnectCore.DeviceRequirement : Swift.Hashable {}
+extension NearpayConnectCore.DeviceRequirement : Swift.RawRepresentable {}
+extension NearpayConnectCore.JobStatus : Swift.Equatable {}
+extension NearpayConnectCore.JobStatus : Swift.Hashable {}
+extension NearpayConnectCore.JobStatus : Swift.RawRepresentable {}
+extension NearpayConnectCore.JobStatus : Swift.Sendable {}
+extension NearpayConnectCore.JobType : Swift.Equatable {}
+extension NearpayConnectCore.JobType : Swift.Hashable {}
+extension NearpayConnectCore.JobType : Swift.RawRepresentable {}
+extension NearpayConnectCore.JobType : Swift.Sendable {}
+extension NearpayConnectCore.ReadingEvent : Swift.Equatable {}
+extension NearpayConnectCore.ReadingEvent : Swift.Hashable {}
+extension NearpayConnectCore.ReadingEvent : Swift.RawRepresentable {}
+extension NearpayConnectCore.TransactionErrorType : Swift.Equatable {}
+extension NearpayConnectCore.TransactionErrorType : Swift.Hashable {}
+extension NearpayConnectCore.TransactionErrorType : Swift.RawRepresentable {}
+extension NearpayConnectCore.JobCancellationType : Swift.Equatable {}
+extension NearpayConnectCore.JobCancellationType : Swift.Hashable {}
+extension NearpayConnectCore.JobCancellationType : Swift.RawRepresentable {}
+extension NearpayConnectCore.TransactionStatus : Swift.Equatable {}
+extension NearpayConnectCore.TransactionStatus : Swift.Hashable {}
+extension NearpayConnectCore.TransactionStatus : Swift.RawRepresentable {}
+extension NearpayConnectCore.TransactionStatus : Swift.Sendable {}
+extension NearpayConnectCore.ReversalStatus : Swift.Equatable {}
+extension NearpayConnectCore.ReversalStatus : Swift.Hashable {}
+extension NearpayConnectCore.ReversalStatus : Swift.RawRepresentable {}
+extension NearpayConnectCore.ReversalStatus : Swift.Sendable {}
+extension NearpayConnectCore.ReconciliationStatus : Swift.Equatable {}
+extension NearpayConnectCore.ReconciliationStatus : Swift.Hashable {}
+extension NearpayConnectCore.ReconciliationStatus : Swift.RawRepresentable {}
+extension NearpayConnectCore.ReconciliationStatus : Swift.Sendable {}
+extension NearpayConnectCore.LogoutReason : Swift.Equatable {}
+extension NearpayConnectCore.LogoutReason : Swift.Hashable {}
+extension NearpayConnectCore.LogoutReason : Swift.RawRepresentable {}
+extension NearpayConnectCore.RequestStatus : Swift.Equatable {}
+extension NearpayConnectCore.RequestStatus : Swift.Hashable {}
+extension NearpayConnectCore.RequestStatus : Swift.RawRepresentable {}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="allow">سماح</string>
+    <string name="already_installed">التطبيق مثبّت مسبقًا</string>
+    <string name="cancel">إلغاء</string>
+    <string name="completed">تم الاكتمال</string>
+    <string name="done">إنهاء</string>
+    <string name="download">حمّل</string>
+    <string name="downloaded_file_not_found">لم يعثر على الملف المحمّل</string>
+    <string name="downloaded_successfully">تمّ التحميل بنجاح</string>
+    <string name="downloading">قيد التحميل…</string>
+    <string name="failed">فشل</string>
+    <string name="failed_to_download">فشل التحميل</string>
+    <string name="failed_to_install">فشل التحميل</string>
+    <string name="initializing">جارِ التهيئة</string>
+    <string name="install">تثبيت</string>
+    <string name="install_message">لبدأ العمليات قم بتثبيت تطبيق عمليات الدفع</string>
+    <string name="install_permission">السماح بالتثبيت</string>
+    <string name="installed">ثٌبّت التطبيق</string>
+    <string name="installing">قيد التثبيت..</string>
+    <string name="installs">التثبيت</string>
+    <string name="loading">جارِ التحديث…</string>
+    <string name="nearpay_sdk">nearpay SDK</string>
+    <string name="not_supported_sdk_version">نسخة المكتبة غير مدعومة</string>
+    <string name="payment_plugin">تطبيق عمليات الدفع</string>
+    <string name="percentage_progress">%\ %f</string>
+    <string name="percentage_simple">%</string>
+    <string name="powered_by">مشغّل بواسطة</string>
+    <string name="retry">أعد المحاولة</string>
+    <string name="solution">الحل</string>
+    <string name="to_install_payment_plugin_allow_from_settings">لتحميل تطبيق عمليات الدفع يحتاج تطبيقك للإذن بالتحميل من إعدادات الجهاز</string>
+    <string name="to_start_accepting_payments_you_need_to_install_payment_plugin">لبدأ العمليات قم بتثبيت تطبيق عمليات الدفع</string>
+    <string name="update">تحديث</string>
+    <string name="update_message">لبدأ العمليات قم بتحديث تطبيق عمليات الدفع</string>
+    <string name="version">النّسخة: %s</string>
+</resources>

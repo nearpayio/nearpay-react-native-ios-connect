@@ -1,0 +1,6 @@
+module Pods_NearpayConnectCoreExample {
+  umbrella header "Pods-NearpayConnectCoreExample-umbrella.h"
+
+  export *
+  module * { export * }
+}

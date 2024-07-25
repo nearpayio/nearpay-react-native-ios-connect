@@ -1,0 +1,1 @@
+{"version":3,"file":"LogoutReason.d.ts","sourceRoot":"","sources":["../../../../src/entities/LogoutReason.tsx"],"names":[],"mappings":"AACA,MAAM,CAAC,OAAO,OAAO,cAAc;IAC/B,SAAS,CAAC,EAAE,MAAM,CAAC;IACnB,aAAa,EAAE,MAAM,CAAC;IACtB,YAAY,CAAC,EAAE,MAAM,CAAC;gBACV,SAAS,EAAE,MAAM,EAAE,aAAa,EAAE,MAAM,EAAC,YAAY,EAAE,MAAM;CAK3E"}

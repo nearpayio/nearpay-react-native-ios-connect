@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-NearpayConnectCoreExample/Pods-NearpayConnectCoreExample-frameworks.sh
+${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes
+${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-nearpay-connect-core/NearpayConnectCore.framework/NearpayConnectCore

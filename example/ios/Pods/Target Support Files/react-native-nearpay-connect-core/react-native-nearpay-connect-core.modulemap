@@ -1,0 +1,6 @@
+module react_native_nearpay_connect_core {
+  umbrella header "react-native-nearpay-connect-core-umbrella.h"
+
+  export *
+  module * { export * }
+}
