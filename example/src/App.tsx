@@ -262,7 +262,7 @@ export default function App() {
 
   const loginOTP = () => {
     nearpay
-      .login('email', 'a.khalifa@nearpay.io', 60000)
+      .login(LoginMethod.Email, 'a.khalifa@nearpay.io', 60000)
       .then((result: any) => {
         const loginResponseString = `login result JSON Result: ${JSON.stringify(result)}`;
         setState((prevState) => ({

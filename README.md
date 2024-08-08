@@ -79,7 +79,7 @@ nearpay.disconnect().then((result: boolean) => {
 Logging in with JWT
 
 ```js
-nearpay.login("jwt", "jwt_token", 60000).then(((result: any) => {
+nearpay.login(LoginMethod.JWT, "jwt_token", 60000).then(((result: any) => {
   // Handle login result
 })).catch((error) => {
   // Handle error
@@ -89,7 +89,7 @@ nearpay.login("jwt", "jwt_token", 60000).then(((result: any) => {
 Logging in with Email
 
 ```js
-nearpay.login("email", "email_address", 60000).then(((result: any) => {
+nearpay.login(LoginMethod.Email, "email_address", 60000).then(((result: any) => {
   // Handle login result
 })).catch((error) => {
   // Handle error
