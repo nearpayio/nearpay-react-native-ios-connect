@@ -6,16 +6,10 @@
 
 ## Installation
 
-To install `react-native-nearpay-connect-core`, you can use npm or yarn:
+To install `react-native-nearpay-connect-core`, you can use npm :
 
 ```bash
-npm install react-native-nearpay-connect-core
-```
-
-or
-
-```bash
-yarn add react-native-nearpay-connect-core
+npm install "https://github.com/nearpayio/nearpay-react-native-ios-connect.git#main" --save
 ```
 
 ## Usage
