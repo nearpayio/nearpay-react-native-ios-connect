@@ -123,7 +123,12 @@ class NearpayConnectTerminal: RCTEventEmitter {
                     }
                     remove(job)
                 case .failure(let error):
-                    sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                    switch error {
+                        case .job(let transactionError):
+                            sendEvent(ـ: "onJobError", body: transactionError?.description)
+                        case .transport(let messageTransportError):
+                            sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                    }
             }
         }
     }
@@ -157,7 +162,12 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             reconciliationJobs.removeValue(forKey: job.id)
                     }
                 case .failure(let error):
-                    sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                    switch error {
+                        case .cancel(let jobCancellationError):
+                            sendEvent(ـ: "onJobError", body: jobCancellationError?.description)
+                        case .transport(let messageTransportError):
+                            sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                    }
             }
             remove(job)
         }
@@ -171,7 +181,8 @@ class NearpayConnectTerminal: RCTEventEmitter {
             return
         }
         
-        NearpayConnectManager.shared.terminal?.getTransaction(with: jobID, enableReceiptUi: enableReceiptUi, terminalTimeout: terminalTimeout, timeout: timeout) { result in
+        NearpayConnectManager.shared.terminal?.getTransaction(with: jobID, enableReceiptUi: enableReceiptUi, terminalTimeout: terminalTimeout, timeout: timeout) { [weak self] result in
+            guard let self else { return }
             switch result {
                 case .success(let transaction):
                     let jsonEncoder = JSONEncoder()
@@ -179,11 +190,16 @@ class NearpayConnectTerminal: RCTEventEmitter {
                     let jsonString = String(data: jsonData, encoding: .utf8)
                     resolve(jsonString)
                 case .failure(let error):
-                    reject("404", error.localizedDescription, error)
+                    switch error {
+                        case .query(let transactionQueryError):
+                            sendEvent(ـ: "onJobError", body: transactionQueryError?.description)
+                        case .transport(let messageTransportError):
+                            sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                    }
             }
         }
     }
-
+    
     @objc func getReconciliation(_ reconciliationRequest: NSDictionary, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         let handler = NPDataHandler(initialData: reconciliationRequest)
         let data = handler.getSpecificData()
@@ -192,7 +208,8 @@ class NearpayConnectTerminal: RCTEventEmitter {
             return
         }
         
-        NearpayConnectManager.shared.terminal?.getReconciliation(with: jobID, enableReceiptUi: enableReceiptUi, terminalTimeout: terminalTimeout, timeout: timeout) { result in
+        NearpayConnectManager.shared.terminal?.getReconciliation(with: jobID, enableReceiptUi: enableReceiptUi, terminalTimeout: terminalTimeout, timeout: timeout) { [weak self] result in
+            guard let self else { return }
             switch result {
                 case .success(let reconciliation):
                     let jsonEncoder = JSONEncoder()
@@ -200,7 +217,12 @@ class NearpayConnectTerminal: RCTEventEmitter {
                     let jsonString = String(data: jsonData, encoding: .utf8)
                     resolve(jsonString)
                 case .failure(let error):
-                    reject("404", error.localizedDescription, error)
+                    switch error {
+                        case .query(let transactionQueryError):
+                            sendEvent(ـ: "onJobError", body: transactionQueryError?.description)
+                        case .transport(let messageTransportError):
+                            sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                    }
             }
         }
     }
@@ -220,22 +242,27 @@ class NearpayConnectTerminal: RCTEventEmitter {
             return
         }
         NearpayConnectManager.shared.terminal?.getTransactionList(startDate: firstDate, endDate: secondDate, page: page, pageSize: pageSize, timeout: timeout) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             switch result {
                 case .success(let transactionList):
                     let jsonEncoder = JSONEncoder()
-                    guard let jsonData = try? jsonEncoder.encode(transactionList) else { 
+                    guard let jsonData = try? jsonEncoder.encode(transactionList) else {
                         sendEvent(ـ: "onTerminalError", body:  "Can't encode transaction list data.")
                         return
-                     }
+                    }
                     let jsonString = String(data: jsonData, encoding: .utf8)
                     resolve(jsonString)
                 case .failure(let error):
-                    reject("404", error.localizedDescription, error)
+                    switch error {
+                        case .query(let transactionQueryError):
+                            sendEvent(ـ: "onJobError", body: transactionQueryError?.description)
+                        case .transport(let messageTransportError):
+                            sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                    }
             }
         }
     }
-
+    
     @objc func getReconciliationList(_ reconciliationListRequest: NSDictionary, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         let handler = NPDataHandler(initialData: reconciliationListRequest)
         let data = handler.getSpecificData()
@@ -250,7 +277,8 @@ class NearpayConnectTerminal: RCTEventEmitter {
             sendEvent(ـ: "onTerminalError", body:  "Reconciliation list invalid date format.")
             return
         }
-        NearpayConnectManager.shared.terminal?.getReconciliationList(startDate: firstDate, endDate: secondDate, page: page, pageSize: pageSize, timeout: timeout) { result in
+        NearpayConnectManager.shared.terminal?.getReconciliationList(startDate: firstDate, endDate: secondDate, page: page, pageSize: pageSize, timeout: timeout) { [weak self] result in
+            guard let self else { return }
             switch result {
                 case .success(let reconciliationList):
                     let jsonEncoder = JSONEncoder()
@@ -258,7 +286,12 @@ class NearpayConnectTerminal: RCTEventEmitter {
                     let jsonString = String(data: jsonData, encoding: .utf8)
                     resolve(jsonString)
                 case .failure(let error):
-                    reject("400", error.localizedDescription, error)
+                    switch error {
+                        case .query(let transactionQueryError):
+                            sendEvent(ـ: "onJobError", body: transactionQueryError?.description)
+                        case .transport(let messageTransportError):
+                            sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                    }
             }
         }
     }
@@ -269,7 +302,12 @@ class NearpayConnectTerminal: RCTEventEmitter {
                 case .success(let isDisconnected):
                     resolve(isDisconnected)
                 case .failure(let error):
-                    reject("400", error.localizedDescription, error)
+                    switch error {
+                        case .auth(let authenticationError):
+                            reject("400", authenticationError?.localizedDescription, error)
+                        case .transport(let messageTransportError):
+                            reject("400", messageTransportError.localizedDescription, error)
+                    }
             }
         }
     }
@@ -303,7 +341,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
                 }
         }
     }
-
+    
     private func onEventListner(_ jobID: String, method: String) {
         guard let method = JobType(rawValue: method) else { return }
         
@@ -317,10 +355,16 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             let onEvent = ["\(purchaseJob.id)": "\(event)"]
                             self.sendEvent(withName: "onEvent", body: onEvent)
                         case .failure(let error):
-                            sendEvent(ـ: "onJobError", body: error.localizedDescription)
-
+                            switch error {
+                                case .general:
+                                    sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                                case .transport(let messageTransportError):
+                                    sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                            }
+                            
                     }
                 }
+                
             case .refund:
                 guard let refundJob = refundJobs[jobID] else { return }
                 refundJob.onEvent = { [weak self] eventResponse in
@@ -330,9 +374,15 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             let onEvent = ["\(refundJob.id)": "\(event)"]
                             self.sendEvent(withName: "onEvent", body: onEvent)
                         case .failure(let error):
-                            sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                            switch error {
+                                case .general:
+                                    sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                                case .transport(let messageTransportError):
+                                    sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                            }
                     }
-                }         
+                }
+                
             case .reverse:
                 guard let reversalJob = reversalJobs[jobID] else { return }
                 reversalJob.onEvent = { [weak self] eventResponse in
@@ -342,7 +392,13 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             let onEvent = ["\(reversalJob.id)": "\(event)"]
                             self.sendEvent(withName: "onEvent", body: onEvent)
                         case .failure(let error):
-                            sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                            switch error {
+                                case .general:
+                                    sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                                case .transport(let messageTransportError):
+                                    sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                            }
+                            
                     }
                 }
             case .reconcile:
@@ -354,7 +410,12 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             let onEvent = ["\(reconciliationJob.id)": "\(event)"]
                             self.sendEvent(withName: "onEvent", body: onEvent)
                         case .failure(let error):
-                            sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                            switch error {
+                                case .general:
+                                    sendEvent(ـ: "onJobError", body: error.localizedDescription)
+                                case .transport(let messageTransportError):
+                                    sendEvent(ـ: "onJobError", body: messageTransportError.description)
+                            }
                     }
                 }
         }
@@ -386,10 +447,10 @@ class NearpayConnectTerminal: RCTEventEmitter {
     }
     
     private func removeJobReferences() {
-         purchaseJobs.forEach { $0.value.onStatusChange = nil; $0.value.onEvent = nil }
-         refundJobs.forEach { $0.value.onStatusChange = nil; $0.value.onEvent = nil }
-         reversalJobs.forEach { $0.value.onStatusChange = nil; $0.value.onEvent = nil }
-         reconciliationJobs.forEach { $0.value.onStatusChange = nil; $0.value.onEvent = nil }
+        purchaseJobs.forEach { $0.value.onStatusChange = nil; $0.value.onEvent = nil }
+        refundJobs.forEach { $0.value.onStatusChange = nil; $0.value.onEvent = nil }
+        reversalJobs.forEach { $0.value.onStatusChange = nil; $0.value.onEvent = nil }
+        reconciliationJobs.forEach { $0.value.onStatusChange = nil; $0.value.onEvent = nil }
     }
     
     private func removeJobs() {

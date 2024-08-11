@@ -32,7 +32,12 @@ class NearpayConnectAuthentication: NSObject {
                     }
                     NearpayConnectManager.shared.set(terminal: terminal)
                 case .failure(let generalAuthenticationError):
-                    reject("404",generalAuthenticationError.localizedDescription , generalAuthenticationError)
+                    switch generalAuthenticationError {
+                        case .auth(let authenticationError):
+                            reject("404", authenticationError?.description, authenticationError)
+                        case .transport(let messageTransportError):
+                            reject("404", messageTransportError.description, messageTransportError)
+                    }
             }
         }
     }
@@ -49,7 +54,12 @@ class NearpayConnectAuthentication: NSObject {
                     let jsonString = String(data: jsonData, encoding: .utf8)
                     resolve(jsonString)
                 case .failure(let error):
-                    reject("404", error.localizedDescription, error)
+                    switch error {
+                        case .auth(let authenticationError):
+                            reject("404", authenticationError?.description, authenticationError)
+                        case .transport(let messageTransportError):
+                            reject("404", messageTransportError.description, messageTransportError)
+                    }
             }
         }
     }
@@ -62,7 +72,12 @@ class NearpayConnectAuthentication: NSObject {
                     NearpayConnectManager.shared.clearTerminal()
                     resolve(isLoggedOut)
                 case .failure(let generalAuthenticationError):
-                    reject("404",generalAuthenticationError.localizedDescription , generalAuthenticationError)
+                    switch generalAuthenticationError {
+                        case .auth(let authenticationError):
+                            reject("404", authenticationError?.description, authenticationError)
+                        case .transport(let messageTransportError):
+                            reject("404", messageTransportError.description, messageTransportError)
+                    }
             }
         }
     }
@@ -78,7 +93,12 @@ class NearpayConnectAuthentication: NSObject {
                     let jsonString = String(data: jsonData, encoding: .utf8)
                     resolve(jsonString)
                 case .failure(let error):
-                    reject("404",error.localizedDescription, error)
+                    switch error {
+                        case .auth(let authenticationError):
+                            reject("404", authenticationError?.description, authenticationError)
+                        case .transport(let messageTransportError):
+                            reject("404", messageTransportError.description, messageTransportError)
+                    }
             }
             
         }
@@ -91,7 +111,12 @@ class NearpayConnectAuthentication: NSObject {
                     NearpayConnectManager.shared.set(terminal: terminal)
                     resolve(terminal.token)
                 case .failure(let error):
-                    reject("404",error.localizedDescription, error)
+                    switch error {
+                        case .auth(let authenticationError):
+                            reject("404", authenticationError?.description, authenticationError)
+                        case .transport(let messageTransportError):
+                            reject("404", messageTransportError.description, messageTransportError)
+                    }
             }
         }
     }
@@ -103,7 +128,12 @@ class NearpayConnectAuthentication: NSObject {
                     NearpayConnectManager.shared.clearTerminal()
                     resolve(isDisconnectedFromCurrentTerminal)
                 case .failure(let error):
-                    reject("404",error.localizedDescription, error)
+                    switch error {
+                        case .auth(let authenticationError):
+                            reject("404", authenticationError?.description, authenticationError)
+                        case .transport(let messageTransportError):
+                            reject("404", messageTransportError.description, messageTransportError)
+                    }
             }
         }
     }
@@ -117,7 +147,12 @@ class NearpayConnectAuthentication: NSObject {
                     let jsonString = String(data: jsonData, encoding: .utf8)
                     resolve(jsonString)
                 case .failure(let error):
-                    reject("404",error.localizedDescription, error)
+                    switch error {
+                        case .auth(let authenticationError):
+                            reject("404", authenticationError?.description, authenticationError)
+                        case .transport(let messageTransportError):
+                            reject("404", messageTransportError.description, messageTransportError)
+                    }
             }
         }
     }
