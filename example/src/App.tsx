@@ -683,7 +683,8 @@ export default function App() {
     onCancelReconciliationListner();
     onJobStatusChange();
     onEvent();
-    onErrorListner();
+    onTerminalErrorListner();
+    onJobErrorListner();
     onProxyPairedListner();
     onProxyUnpairedListner();
     onProxyConnectedListner();
@@ -843,8 +844,15 @@ export default function App() {
     });
   };
 
-  const onErrorListner = () => {
-    nearpay.onError((result: any) => {
+  const onTerminalErrorListner = () => {
+    nearpay.onTerminalError((result: any) => {
+      const error = JSON.stringify(result);
+      showAlert(error);
+    });
+  };
+
+  const onJobErrorListner = () => {
+    nearpay.onJobError((result: any) => {
       const error = JSON.stringify(result);
       showAlert(error);
     });

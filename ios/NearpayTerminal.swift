@@ -16,14 +16,14 @@ class NearpayConnectTerminal: RCTEventEmitter {
     }
     
     @objc override func supportedEvents() -> [String]! {
-        return [ "onStartPurchase", "onStartRefund", "onStartReverse", "onStartReconciliation", "onCancelPurchase", "onCancelRefund", "onCancelReverse", "onCancelReconciliation","onError", "onJobStatusChange", "onEvent"]
+        return [ "onStartPurchase", "onStartRefund", "onStartReverse", "onStartReconciliation", "onCancelPurchase", "onCancelRefund", "onCancelReverse", "onCancelReconciliation", "onJobError", "onTerminalError",  "onJobStatusChange", "onEvent"]
     }
     
     @objc func purchase(_ purchaseRequest: NSDictionary, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         let handler = NPDataHandler(initialData: purchaseRequest)
         let data = handler.getSpecificData()
         guard let jobID = data.jobID, let amount = data.amount,let timeout = data.timeout else {
-            sendEvent(ـ: "onError", body: "Invalid purchase request")
+            sendEvent(ـ: "onTerminalError", body: "Invalid purchase request")
             return
         }
         let purchaseJob = NearpayConnectManager.shared.terminal?.purchase(jobID: jobID, customerReferenceNumber: data.customerReferenceNumber ?? "", amount: Double(amount), enableReceiptUi: data.enableReceiptUi ?? true, enableReversal: data.enableReversal ?? true, dismissible: data.dismissible ?? false, terminalTimeout: data.terminalTimeout ?? 6, timeout: timeout)
@@ -36,7 +36,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
         let handler = NPDataHandler(initialData: refundRequest)
         let data = handler.getSpecificData()
         guard let jobID = data.jobID, let transactionUUID = data.transactionUUID, let amount = data.amount,let timeout = data.timeout,let adminPin = data.adminPin else {
-            sendEvent(ـ: "onError", body: "Invalid refund request")
+            sendEvent(ـ: "onTerminalError", body: "Invalid refund request")
             return
         }
         let refundJob = NearpayConnectManager.shared.terminal?.refund(jobID: jobID, originalJobID: transactionUUID, amount: Double(amount), customerReferenceNumber: data.customerReferenceNumber ?? "" , adminPin: adminPin, enableEditableRefundAmountUi: data.enableEditableRefundAmountUi ?? true, enableReceiptUi: data.enableReceiptUi ?? true, enableReversal: data.enableReversal ?? true, dismissible: data.dismissible ?? false, terminalTimeout: data.terminalTimeout ?? 6,timeout: timeout)
@@ -49,7 +49,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
         let handler = NPDataHandler(initialData: reverseRequest)
         let data = handler.getSpecificData()
         guard let jobID = data.jobID, let transactionUUID = data.transactionUUID, let timeout = data.timeout else {
-            sendEvent(ـ: "onError", body: "Invalid reverse request")
+            sendEvent(ـ: "onTerminalError", body: "Invalid reverse request")
             return
         }
         let reversalJob = NearpayConnectManager.shared.terminal?.reverse(jobID: jobID, originalJobID: transactionUUID, enableReceiptUi: data.enableReceiptUi ?? true, dismissible: data.dismissible ?? false, terminalTimeout: data.terminalTimeout ?? 6, timeout: timeout)
@@ -62,7 +62,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
         let handler = NPDataHandler(initialData: reconcileRequest)
         let data = handler.getSpecificData()
         guard let jobID = data.jobID, let timeout = data.timeout else {
-            sendEvent(ـ: "onError", body: "Invalid reconcile request")
+            sendEvent(ـ: "onTerminalError", body: "Invalid reconcile request")
             return
         }
         
@@ -123,7 +123,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
                     }
                     remove(job)
                 case .failure(let error):
-                    sendEvent(ـ: "onError", body: error.localizedDescription)
+                    sendEvent(ـ: "onJobError", body: error.localizedDescription)
             }
         }
     }
@@ -157,7 +157,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             reconciliationJobs.removeValue(forKey: job.id)
                     }
                 case .failure(let error):
-                    sendEvent(ـ: "onError", body: error.localizedDescription)
+                    sendEvent(ـ: "onJobError", body: error.localizedDescription)
             }
             remove(job)
         }
@@ -167,7 +167,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
         let handler = NPDataHandler(initialData: transactionRequest)
         let data = handler.getSpecificData()
         guard let jobID = data.jobID, let enableReceiptUi = data.enableReceiptUi, let terminalTimeout = data.terminalTimeout, let timeout = data.timeout else {
-            sendEvent(ـ: "onError", body: "Invalid get transaction request")
+            sendEvent(ـ: "onTerminalError", body: "Invalid get transaction request")
             return
         }
         
@@ -188,7 +188,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
         let handler = NPDataHandler(initialData: reconciliationRequest)
         let data = handler.getSpecificData()
         guard let jobID = data.jobID, let enableReceiptUi = data.enableReceiptUi, let terminalTimeout = data.terminalTimeout, let timeout = data.timeout else {
-            sendEvent(ـ: "onError", body: "Invalid get reconciliation request")
+            sendEvent(ـ: "onTerminalError", body: "Invalid get reconciliation request")
             return
         }
         
@@ -209,14 +209,14 @@ class NearpayConnectTerminal: RCTEventEmitter {
         let handler = NPDataHandler(initialData: transactionListRequest)
         let data = handler.getSpecificData()
         guard let startDate = data.startDate, let endDate = data.endDate, let page = data.page, let pageSize = data.pageSize, let timeout = data.timeout else {
-            sendEvent(ـ: "onError", body: "Invalid transaction list request")
+            sendEvent(ـ: "onTerminalError", body: "Invalid transaction list request")
             return
         }
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         formatter.timeZone = TimeZone.current
         guard let firstDate = formatter.date(from: startDate), let secondDate = formatter.date(from: endDate) else {
-            sendEvent(ـ: "onError", body:  "Transaction list invalid date format.")
+            sendEvent(ـ: "onTerminalError", body:  "Transaction list invalid date format.")
             return
         }
         NearpayConnectManager.shared.terminal?.getTransactionList(startDate: firstDate, endDate: secondDate, page: page, pageSize: pageSize, timeout: timeout) { [weak self] result in
@@ -225,7 +225,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
                 case .success(let transactionList):
                     let jsonEncoder = JSONEncoder()
                     guard let jsonData = try? jsonEncoder.encode(transactionList) else { 
-                        sendEvent(ـ: "onError", body:  "Can't encode transaction list data.")
+                        sendEvent(ـ: "onTerminalError", body:  "Can't encode transaction list data.")
                         return
                      }
                     let jsonString = String(data: jsonData, encoding: .utf8)
@@ -243,11 +243,11 @@ class NearpayConnectTerminal: RCTEventEmitter {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         formatter.timeZone = TimeZone.current
         guard let startDate = data.startDate, let endDate = data.endDate, let page = data.page, let pageSize = data.pageSize, let timeout = data.timeout else {
-            sendEvent(ـ: "onError", body: "Invalid reconciliation list request")
+            sendEvent(ـ: "onTerminalError", body: "Invalid reconciliation list request")
             return
         }
         guard let firstDate = formatter.date(from: startDate), let secondDate = formatter.date(from: endDate) else {
-            sendEvent(ـ: "onError", body:  "Reconciliation list invalid date format.")
+            sendEvent(ـ: "onTerminalError", body:  "Reconciliation list invalid date format.")
             return
         }
         NearpayConnectManager.shared.terminal?.getReconciliationList(startDate: firstDate, endDate: secondDate, page: page, pageSize: pageSize, timeout: timeout) { result in
@@ -317,7 +317,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             let onEvent = ["\(purchaseJob.id)": "\(event)"]
                             self.sendEvent(withName: "onEvent", body: onEvent)
                         case .failure(let error):
-                            sendEvent(ـ: "onError", body: error.localizedDescription)
+                            sendEvent(ـ: "onJobError", body: error.localizedDescription)
 
                     }
                 }
@@ -330,7 +330,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             let onEvent = ["\(refundJob.id)": "\(event)"]
                             self.sendEvent(withName: "onEvent", body: onEvent)
                         case .failure(let error):
-                            sendEvent(ـ: "onError", body: error.localizedDescription)
+                            sendEvent(ـ: "onJobError", body: error.localizedDescription)
                     }
                 }         
             case .reverse:
@@ -342,7 +342,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             let onEvent = ["\(reversalJob.id)": "\(event)"]
                             self.sendEvent(withName: "onEvent", body: onEvent)
                         case .failure(let error):
-                            sendEvent(ـ: "onError", body: error.localizedDescription)
+                            sendEvent(ـ: "onJobError", body: error.localizedDescription)
                     }
                 }
             case .reconcile:
@@ -354,7 +354,7 @@ class NearpayConnectTerminal: RCTEventEmitter {
                             let onEvent = ["\(reconciliationJob.id)": "\(event)"]
                             self.sendEvent(withName: "onEvent", body: onEvent)
                         case .failure(let error):
-                            sendEvent(ـ: "onError", body: error.localizedDescription)
+                            sendEvent(ـ: "onJobError", body: error.localizedDescription)
                     }
                 }
         }

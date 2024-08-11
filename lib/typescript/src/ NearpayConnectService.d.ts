@@ -29,7 +29,8 @@ export declare class NearpayConnect {
     onCancelReconciliation(callback: Callback): void;
     onJobStatusChange(callback: Callback): void;
     onEvent(callback: Callback): void;
-    onError(callback: Callback): void;
+    onJobError(callback: Callback): void;
+    onTerminalError(callback: Callback): void;
     build(port: number, environment: string, networkConfiguration: string, loadingUi: boolean, deviceName: string): Promise<any>;
     showConnection(): Promise<any>;
     startConnection(): Promise<any>;

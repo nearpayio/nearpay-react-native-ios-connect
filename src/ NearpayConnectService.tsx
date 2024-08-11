@@ -335,13 +335,24 @@ export class NearpayConnect {
     });
   }
 
-  onError(callback: Callback) {
-    this.emitter.addListener('onError', EventType.terminal, (result: any) => {
+  onJobError(callback: Callback) {
+    this.emitter.addListener('onJobError', EventType.terminal, (result: any) => {
       try {
         let errorJSON = JSON.parse(result);
         callback(errorJSON);
       } catch (error) {
-        console.log(`onError ${error}`);
+        console.log(`onJobError ${error}`);
+      }
+    });
+  }
+
+  onTerminalError(callback: Callback) {
+    this.emitter.addListener('onTerminalError', EventType.terminal, (result: any) => {
+      try {
+        let errorJSON = JSON.parse(result);
+        callback(errorJSON);
+      } catch (error) {
+        console.log(`onTerminalError ${error}`);
       }
     });
   }
