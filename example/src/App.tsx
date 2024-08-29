@@ -14,7 +14,7 @@ import React, { useEffect, useState } from 'react';
 import type LogoutReason from '../../src/entities/LogoutReason';
 import uuid from 'react-native-uuid';
 import Job from '../../src/entities/Job';
-import { NearpayConnect } from '../../src/ NearpayConnectService';
+import { NearpayConnect } from 'react-native-nearpay-connect-core';
 import { PulseAnimation } from './PulseAnimation';
 import type { NPRequest } from '../../src/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
