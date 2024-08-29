@@ -389,44 +389,44 @@ onStatusChange event
 onReconnectSuggestion event
 
 ```js
-  const onReconnectSuggestionListner = () => {
+  const onReconnectSuggestion = () => {
     nearpay.onReconnectSuggestion((result: string) => {
     // Handle on reconnect suggestion event
 
     });
 ```
 
-onStartPurchase event
+onPurchase event
 
 ```js
-    nearpay.onStartPurchase((result: any) => {
+    nearpay.onPurchase((result: any) => {
     // Handle purchase event
 
     });
 ```
 
-onStartRefund event
+onRefund event
 
 ```js
-    nearpay.onStartRefund((result: any) => {
+    nearpay.onRefund((result: any) => {
     // Handle refund event
 
 });
 ```
 
-onStartReverse event
+onReverse event
 
 ```js
-    nearpay.onStartReverse((result: any) => {
+    nearpay.onReverse((result: any) => {
      // Handle reversal event
 
 });
 ```
 
-onStartReconciliation event
+onReconciliation event
 
 ```js
-    nearpay.onStartReconciliation((result: any) => {
+    nearpay.onReconciliation((result: any) => {
     // Handle reconciliation event
 
 });

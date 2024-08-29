@@ -200,7 +200,7 @@ export class NearpayConnect {
     );
   }
 
-  onStartPurchase(callback: Callback) {
+  onPurchase(callback: Callback) {
     this.emitter.addListener(
       'onStartPurchase',
       EventType.terminal,
@@ -215,7 +215,7 @@ export class NearpayConnect {
     );
   }
 
-  onStartRefund(callback: Callback) {
+  onRefund(callback: Callback) {
     this.emitter.addListener(
       'onStartRefund',
       EventType.terminal,
@@ -230,7 +230,7 @@ export class NearpayConnect {
     );
   }
 
-  onStartReverse(callback: Callback) {
+  onReverse(callback: Callback) {
     this.emitter.addListener(
       'onStartReverse',
       EventType.terminal,
@@ -245,7 +245,7 @@ export class NearpayConnect {
     );
   }
 
-  onStartReconciliation(callback: Callback) {
+  onReconciliation(callback: Callback) {
     this.emitter.addListener(
       'onStartReconciliation',
       EventType.terminal,

@@ -623,7 +623,7 @@ export default function App() {
     nearpay.stopConnection();
   };
 
-  const onProxyPairedListner = () => {
+  const onProxyPaired = () => {
     nearpay.onProxyPaired((result: string) => {
       console.log('onProxyPaired');
       const onProxyPairedResponseString = `onProxyPaired result: ${JSON.stringify(result)}`;
@@ -633,7 +633,7 @@ export default function App() {
       }));
     });
   };
-  const onProxyUnpairedListner = () => {
+  const onProxyUnpaired = () => {
     nearpay.onProxyUnpaired((result: string) => {
       console.log('onProxyUnpairedListner');
       const onProxyUnpairedResponseString = `onProxyUnpaired result: ${JSON.stringify(result)}`;
@@ -644,7 +644,7 @@ export default function App() {
     });
   };
 
-  const onProxyConnectedListner = () => {
+  const onProxyConnected = () => {
     nearpay.onProxyConnected((result: string) => {
       console.log('onProxyConnected');
       const onProxyConnectedResponseString = `onProxyConnected result: ${JSON.stringify(result)}`;
@@ -654,7 +654,7 @@ export default function App() {
       }));
     });
   };
-  const onProxyDisconnectedListner = () => {
+  const onProxyDisconnected = () => {
     nearpay.onProxyDisconnected((result: string) => {
       console.log('onProxyDisconnectedListner');
       const onProxyDisconnectedResponseString = `onProxyDisconnected result: ${JSON.stringify(result)}`;
@@ -667,31 +667,31 @@ export default function App() {
 
   /// Callbacks
   const setupNearpayCallbacks = () => {
-    onLogoutListner();
-    onResumeListner();
-    onPauseListner();
-    onDisconnectListner();
-    onStatusChangeListner();
-    onReconnectSuggestionListner();
-    onStartPurchaseListner();
-    onStartRefundListner();
-    onStartReverseListner();
-    onStartReconciliationListner();
-    onCancelPurchaseListner();
-    onCancelRefundListner();
-    onCancelReverseListner();
-    onCancelReconciliationListner();
+    onLogout();
+    onResume();
+    onPause();
+    onDisconnect();
+    onStatusChange();
+    onReconnectSuggestion();
+    onPurchase();
+    onRefund();
+    onReverse();
+    onReconciliation();
+    onCancelPurchase();
+    onCancelRefund();
+    onCancelReverse();
+    onCancelReconciliation();
     onJobStatusChange();
     onEvent();
-    onTerminalErrorListner();
-    onJobErrorListner();
-    onProxyPairedListner();
-    onProxyUnpairedListner();
-    onProxyConnectedListner();
-    onProxyDisconnectedListner();
+    onTerminalError();
+    onJobError();
+    onProxyPaired();
+    onProxyUnpaired();
+    onProxyConnected();
+    onProxyDisconnected();
   };
 
-  const onLogoutListner = () => {
+  const onLogout = () => {
     nearpay.onLogout((result: LogoutReason) => {
       const logoutResponseString = `Terminal Token: ${result.terminalToken}, User Token: ${result.userToken}, Logout Reason: ${result.logoutReason}`;
       setState((prevState) => ({
@@ -705,13 +705,13 @@ export default function App() {
     });
   };
 
-  const onResumeListner = () => {
+  const onResume = () => {
     nearpay.onResume((result: string) => {
       setState((prevState) => ({ ...prevState, response: result }));
     });
   };
 
-  const onPauseListner = () => {
+  const onPause = () => {
     nearpay.onPause((result: string) => {
       setState((prevState) => ({ ...prevState, response: result }));
     });
@@ -728,7 +728,7 @@ export default function App() {
     });
   };
 
-  const onDisconnectListner = () => {
+  const onDisconnect = () => {
     nearpay.onDisconnect((result: string) => {
       setState((prevState) => ({
         ...prevState,
@@ -744,7 +744,7 @@ export default function App() {
     [key: string]: string;
   }
 
-  const onStatusChangeListner = () => {
+  const onStatusChange = () => {
     nearpay.onStatusChange((result: Status) => {
       const status = Object.entries(result);
       console.log(`onStatusChange => ${status}`);
@@ -758,14 +758,14 @@ export default function App() {
     });
   };
 
-  const onReconnectSuggestionListner = () => {
+  const onReconnectSuggestion = () => {
     +nearpay.onReconnectSuggestion((result: string) => {
       setState((prevState) => ({ ...prevState, response: result }));
     });
   };
 
-  const onStartPurchaseListner = () => {
-    nearpay.onStartPurchase((result: any) => {
+  const onPurchase = () => {
+    nearpay.onPurchase((result: any) => {
       const resultString = JSON.stringify(result);
       const transactionUUID = result.transactionReceipts[0].transaction_uuid;
       setState((prevState) => ({
@@ -776,8 +776,8 @@ export default function App() {
     });
   };
 
-  const onStartRefundListner = () => {
-    nearpay.onStartRefund((result: any) => {
+  const onRefund = () => {
+    nearpay.onRefund((result: any) => {
       const refundString = JSON.stringify(result);
       const transactionUUID = result.transactionReceipts[0].transaction_uuid;
       setState((prevState) => ({
@@ -788,15 +788,15 @@ export default function App() {
     });
   };
 
-  const onStartReverseListner = () => {
-    nearpay.onStartReverse((result: any) => {
+  const onReverse = () => {
+    nearpay.onReverse((result: any) => {
       const reverseString = JSON.stringify(result);
       setState((prevState) => ({ ...prevState, response: reverseString }));
     });
   };
 
-  const onStartReconciliationListner = () => {
-    nearpay.onStartReconciliation((result: any) => {
+  const onReconciliation = () => {
+    nearpay.onReconciliation((result: any) => {
       const reconcileResponseString = JSON.stringify(result);
       const reconcileID = result.reconcileReceipt.id;
       setState((prevState) => ({
@@ -807,7 +807,7 @@ export default function App() {
     });
   };
 
-  const onCancelPurchaseListner = () => {
+  const onCancelPurchase = () => {
     nearpay.onCancelPurchase((result: any) => {
       const cancelPurchaseString = JSON.stringify(result);
       setState((prevState) => ({
@@ -817,14 +817,14 @@ export default function App() {
     });
   };
 
-  const onCancelRefundListner = () => {
+  const onCancelRefund = () => {
     nearpay.onCancelRefund((result: any) => {
       const cancelRefundString = JSON.stringify(result);
       setState((prevState) => ({ ...prevState, response: cancelRefundString }));
     });
   };
 
-  const onCancelReverseListner = () => {
+  const onCancelReverse = () => {
     nearpay.onCancelReverse((result: any) => {
       const cancelReverseString = JSON.stringify(result);
       setState((prevState) => ({
@@ -834,7 +834,7 @@ export default function App() {
     });
   };
 
-  const onCancelReconciliationListner = () => {
+  const onCancelReconciliation = () => {
     nearpay.onCancelReconciliation((result: any) => {
       const cancelReconcileString = JSON.stringify(result);
       setState((prevState) => ({
@@ -844,14 +844,14 @@ export default function App() {
     });
   };
 
-  const onTerminalErrorListner = () => {
+  const onTerminalError = () => {
     nearpay.onTerminalError((result: any) => {
       const error = JSON.stringify(result);
       showAlert(error);
     });
   };
 
-  const onJobErrorListner = () => {
+  const onJobError = () => {
     nearpay.onJobError((result: any) => {
       const error = JSON.stringify(result);
       showAlert(error);
