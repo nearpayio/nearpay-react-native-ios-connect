@@ -8,6 +8,7 @@ import type {
   DiscoverDevicesCallback,
   LogoutReasonCallback,
   NPRequest,
+  TransactionCallback,
 } from './types';
 import NearpayConnectTerminal, {
   type INearpayConnectTerminal,
@@ -21,6 +22,13 @@ import NearpayConnectProxy from './NearpayConnectProxy';
 import NearpayConnectCore, {
   type INearpayConnectCore,
 } from './ NearpayConnectCore';
+import type VerifyResult from './Models/VerifyResult';
+import {
+  parseAndTransformJOBResponse,
+  parseAndTransformResponse,
+} from './Utils/responseParser';
+import type { Terminal } from './Models/Terminal';
+import type { TransactionModel } from './Models/TransactionModel';
 
 export class NearpayConnect {
   private core: INearpayConnectCore;
@@ -200,14 +208,15 @@ export class NearpayConnect {
     );
   }
 
-  onPurchase(callback: Callback) {
+  onPurchase(callback: TransactionCallback) {
     this.emitter.addListener(
       'onStartPurchase',
       EventType.terminal,
       (result: any) => {
         try {
-          const purchaseJSON = JSON.parse(JSON.parse(result));
-          callback(purchaseJSON);
+          const transactionModel =
+            parseAndTransformJOBResponse<TransactionModel>(result);
+          callback(transactionModel);
         } catch (error) {
           console.log(`onStartPurchase ${error}`);
         }
@@ -215,14 +224,15 @@ export class NearpayConnect {
     );
   }
 
-  onRefund(callback: Callback) {
+  onRefund(callback: TransactionCallback) {
     this.emitter.addListener(
       'onStartRefund',
       EventType.terminal,
       (result: any) => {
         try {
-          const refundJSON = JSON.parse(JSON.parse(result));
-          callback(refundJSON);
+          const transactionModel =
+            parseAndTransformJOBResponse<TransactionModel>(result);
+          callback(transactionModel);
         } catch (error) {
           console.log(`onStartRefund ${error}`);
         }
@@ -415,12 +425,16 @@ export class NearpayConnect {
     return this.auth.login(method, value, timeout);
   }
 
-  verify(otp: string, timeout: number): Promise<any> {
-    return this.auth.verify(otp, timeout);
+  verify(otp: string, timeout: number): Promise<VerifyResult> {
+    return this.auth.verify(otp, timeout).then((response: string) => {
+      return parseAndTransformResponse<VerifyResult>(response);
+    });
   }
 
-  getTerminalList(timeout: number): Promise<any> {
-    return this.auth.getTerminalList(timeout);
+  getTerminalList(timeout: number): Promise<Terminal[]> {
+    return this.auth.getTerminalList(timeout).then((response: string) => {
+      return parseAndTransformResponse<Terminal[]>(response);
+    });
   }
 
   logout(timeout: number): Promise<boolean> {
@@ -428,7 +442,7 @@ export class NearpayConnect {
     return this.auth.logout(timeout);
   }
 
-  connectTerminal(terminalID: string, timeout: number): Promise<any> {
+  connectTerminal(terminalID: string, timeout: number): Promise<string> {
     return this.auth.connectTerminal(terminalID, timeout);
   }
 

@@ -22,6 +22,11 @@ import { AppState as RNAppState } from 'react-native';
 import { LoginMethod } from '../../src/entities/LoginMethod';
 import { Environment } from '../../src/entities/Environment';
 import { NetworkConfiguration } from '../../src/entities/NetworkConfiguration';
+import { showAlert } from './utils';
+import styles from './styles';
+import type VerifyResult from '../../src/Models/VerifyResult';
+import type { Terminal } from '../../src/Models/Terminal';
+import type { TransactionModel } from '../../src/Models/TransactionModel';
 
 interface AppState {
   isConnected: boolean;
@@ -31,7 +36,7 @@ interface AppState {
   isLoginByEmail: boolean;
   deviceList: DeviceInfo[];
   connectedDevice: DeviceInfo | null;
-  terminalList: any[];
+  terminalList: Terminal[];
   jobList: Job[];
   response: string;
   transactionUUID: string;
@@ -174,7 +179,8 @@ export default function App() {
   /// Discovery functions
   const startDiscovery = () => {
     nearpay.startDeviceDiscovery((devices: DeviceInfo[]) => {
-      const startDiscoveryResponseString = `Start discovery result: ${JSON.stringify(devices)}`;
+      const startDiscoveryResponseString = `Start discovery result: ${devices}`;
+
       setState((prevState) => ({
         ...prevState,
         response: startDiscoveryResponseString,
@@ -188,7 +194,7 @@ export default function App() {
     nearpay
       .stopDeviceDiscovery()
       .then((result: boolean) => {
-        const stopDiscoveryResponseString = `Stop discovery result: ${JSON.stringify(result)}`;
+        const stopDiscoveryResponseString = `Stop discovery result: ${result}`;
         setState((prevState) => ({
           ...prevState,
           response: stopDiscoveryResponseString,
@@ -209,12 +215,12 @@ export default function App() {
         `${state.connectedDevice?.ip}`,
         `${state.connectedDevice?.port}`
       )
-      .then((result: boolean) => {
-        const connectDeviceResponseString = `Connect device result: ${JSON.stringify(result)}`;
+      .then((isConnected: boolean) => {
+        const connectDeviceResponseString = `Connect device result: ${isConnected}`;
         setState((prevState) => ({
           ...prevState,
           response: connectDeviceResponseString,
-          isConnected: result,
+          isConnected: isConnected,
         }));
       })
       .catch((error) => {
@@ -225,12 +231,12 @@ export default function App() {
   const disconnectDevice = () => {
     nearpay
       .disconnect()
-      .then((result: boolean) => {
-        const disconnectDeviceResponseString = `Disconnect device result: ${JSON.stringify(result)}`;
+      .then((isConnected: boolean) => {
+        const disconnectDeviceResponseString = `Disconnect device result: ${isConnected}`;
         setState((prevState) => ({
           ...prevState,
           response: disconnectDeviceResponseString,
-          isConnected: result,
+          isConnected: isConnected,
           jobList: [],
         }));
       })
@@ -249,6 +255,7 @@ export default function App() {
       )
       .then((result: any) => {
         const loginResponseString = `loginJWT  JSON Result: ${JSON.stringify(result)}`;
+
         setState((prevState) => ({
           ...prevState,
           response: loginResponseString,
@@ -300,12 +307,12 @@ export default function App() {
         showAlert(error);
       });
   };
-  6;
+
   const verifyOTP = (otp: string) => {
     nearpay
       .verify(otp, 6000)
-      .then((result: any) => {
-        const verifyOTPResponseString = `Verify response JSON Result: ${JSON.stringify(result)}`;
+      .then((result: VerifyResult) => {
+        const verifyOTPResponseString = `Verify response JSON Result: ${result}`;
         setState((prevState) => ({
           ...prevState,
           response: verifyOTPResponseString,
@@ -316,16 +323,16 @@ export default function App() {
         showAlert(error);
       });
   };
+
   const terminalListRetrival = () => {
     nearpay
       .getTerminalList(6000)
-      .then((result: any) => {
-        const terminals = JSON.parse(result);
-        const terminalListRespinseString = `terminalListRetrival JSON Result: ${JSON.stringify(result)}`;
+      .then((result: Terminal[]) => {
+        const terminalListRespinseString = `terminalListRetrival JSON Result: ${result[0]?.tid}`;
         setState((prevState) => ({
           ...prevState,
           response: terminalListRespinseString,
-          terminalList: terminals,
+          terminalList: result,
         }));
       })
       .catch((error) => {
@@ -336,7 +343,7 @@ export default function App() {
   const connectToTerminal = (terminalID: string) => {
     nearpay
       .connectTerminal(terminalID, 6000)
-      .then((result: any) => {
+      .then((result: string) => {
         setState((prevState) => ({
           ...prevState,
           response: result,
@@ -477,6 +484,8 @@ export default function App() {
     nearpay
       .getTransaction(transactionRequest)
       .then((result: any) => {
+        console.log(`getTransaction result ${result}`);
+        console.log(`getTransaction result json ${JSON.parse(result)}`);
         const transactionString = `Transaction response : ${JSON.stringify(result)}`;
         setState((prevState) => ({
           ...prevState,
@@ -765,9 +774,9 @@ export default function App() {
   };
 
   const onPurchase = () => {
-    nearpay.onPurchase((result: any) => {
-      const resultString = JSON.stringify(result);
-      const transactionUUID = result.transactionReceipts[0].transaction_uuid;
+    nearpay.onPurchase((result: TransactionModel) => {
+      const resultString = `Purchase result => ${result.transactionReceipts[0]?.thanks_message.english} ${result.transactionReceipts[0]?.tid}`;
+      const transactionUUID = `${result.transactionReceipts[0]?.transaction_uuid}`;
       setState((prevState) => ({
         ...prevState,
         transactionUUID: transactionUUID,
@@ -777,9 +786,9 @@ export default function App() {
   };
 
   const onRefund = () => {
-    nearpay.onRefund((result: any) => {
-      const refundString = JSON.stringify(result);
-      const transactionUUID = result.transactionReceipts[0].transaction_uuid;
+    nearpay.onRefund((result: TransactionModel) => {
+      const refundString = `Refund result => ${result.transactionReceipts[0]?.thanks_message.english} ${result.transactionReceipts[0]?.tid}`;
+      const transactionUUID = `${result.transactionReceipts[0]?.transaction_uuid}`;
       setState((prevState) => ({
         ...prevState,
         transactionUUID: transactionUUID,
@@ -865,10 +874,6 @@ export default function App() {
     }
     jobs.splice(index, 1);
     setState((prevState) => ({ ...prevState, jobList: jobs }));
-  };
-
-  const showAlert = (message: string) => {
-    Alert.alert('Error', `${message}`);
   };
 
   return (
@@ -1529,69 +1534,3 @@ export default function App() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  row2: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginBottom: 12,
-    width: 'auto',
-  },
-  button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 100,
-    elevation: 3,
-    backgroundColor: 'black',
-    marginBottom: 20,
-    height: 45,
-    width: 175,
-  },
-  text: {
-    fontSize: 12,
-    lineHeight: 21,
-    alignContent: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    fontWeight: '500',
-    color: 'white',
-  },
-  smallText: {
-    fontSize: 10,
-    lineHeight: 21,
-    alignContent: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    fontWeight: '500',
-    color: 'white',
-  },
-  selectableText: {
-    fontSize: 12,
-    lineHeight: 30,
-    letterSpacing: 0.25,
-    color: 'gray',
-    fontWeight: 'bold',
-  },
-  selected: {
-    backgroundColor: 'coral',
-    borderWidth: 0,
-  },
-  selectedLabel: {
-    color: 'white',
-  },
-  label: {
-    textAlign: 'center',
-    marginTop: 20,
-    lineHeight: 50,
-    marginBottom: 20,
-    fontSize: 26,
-    backgroundColor: 'oldlace',
-    fontWeight: '900',
-  },
-});
