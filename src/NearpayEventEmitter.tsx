@@ -5,6 +5,8 @@ class NearpayEventEmitter {
   private terminalEmitter?: NativeEventEmitter;
   private proxyEmitter?: NativeEventEmitter;
 
+  private listeners: { [key: string]: () => void } = {};
+
   constructor() {
     if (Platform.OS === 'ios') {
       this.coreEmitter = new NativeEventEmitter(
@@ -25,16 +27,32 @@ class NearpayEventEmitter {
     type: EventType,
     callback: (data: T) => void
   ): void {
+    // Remove existing listener if it exists
+    this.removeListener(eventName);
+
     if (Platform.OS === 'ios') {
-      if (type == EventType.core) {
+      if (type === EventType.core) {
         this.coreEmitter?.addListener(eventName, callback);
-      } else if (type == EventType.terminal) {
+        this.listeners[eventName] = () =>
+          this.coreEmitter?.removeAllListeners(eventName);
+      } else if (type === EventType.terminal) {
         this.terminalEmitter?.addListener(eventName, callback);
+        this.listeners[eventName] = () =>
+          this.terminalEmitter?.removeAllListeners(eventName);
       }
     } else if (Platform.OS === 'android') {
-      if (type == EventType.proxy) {
+      if (type === EventType.proxy) {
         this.proxyEmitter?.addListener(eventName, callback);
+        this.listeners[eventName] = () =>
+          this.proxyEmitter?.removeAllListeners(eventName);
       }
+    }
+  }
+
+  public removeListener(eventName: string): void {
+    if (this.listeners[eventName]) {
+      this.listeners[eventName](); // Remove the existing listener
+      delete this.listeners[eventName]; // Delete the reference
     }
   }
 }
