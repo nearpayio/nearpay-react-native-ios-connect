@@ -28,7 +28,14 @@ import {
   parseAndTransformResponse,
 } from './Utils/responseParser';
 import type { Terminal } from './Models/Terminal';
-import type { TransactionModel } from './Models/TransactionModel';
+import type {
+  TransactionModel,
+  TransactionReceiptModel,
+} from './Models/TransactionModel';
+import type { ReconcileModel } from './Models/ReconcileModel';
+import type { ReconciliationListModel } from './Models/ReconciliationListModel';
+import type { ReceiptModel } from './Models/ReconciliationModel';
+import type { TransactionListModel } from './Models/TransactionListModel';
 
 export class NearpayConnect {
   private core: INearpayConnectCore;
@@ -246,8 +253,9 @@ export class NearpayConnect {
       EventType.terminal,
       (result: any) => {
         try {
-          const revereseJSON = JSON.parse(result);
-          callback(revereseJSON);
+          const transactionModel =
+            parseAndTransformResponse<TransactionModel>(result);
+          callback(transactionModel);
         } catch (error) {
           console.log(`onStartReverse ${error}`);
         }
@@ -261,14 +269,16 @@ export class NearpayConnect {
       EventType.terminal,
       (result: any) => {
         try {
-          const reconciliationJSON = JSON.parse(JSON.parse(result));
-          callback(reconciliationJSON);
+          const reconciliationModel =
+            parseAndTransformJOBResponse<ReconcileModel>(result);
+          callback(reconciliationModel);
         } catch (error) {
           console.log(`onStartReconciliation ${error}`);
         }
       }
     );
   }
+
   onCancelPurchase(callback: Callback) {
     this.emitter.addListener(
       'onCancelPurchase',
@@ -478,21 +488,42 @@ export class NearpayConnect {
     return this.terminal.cancel(job.id, job.method);
   }
 
-  getTransaction(transactionRequest: NPRequest): Promise<any> {
-    return this.terminal.getTransaction(transactionRequest);
+  getTransaction(
+    transactionRequest: NPRequest
+  ): Promise<TransactionReceiptModel> {
+    return this.terminal
+      .getTransaction(transactionRequest)
+      .then((response: string) => {
+        return parseAndTransformResponse<TransactionReceiptModel>(response);
+      });
   }
 
-  getReconciliation(reconciliationRequest: NPRequest): Promise<any> {
-    console.log(reconciliationRequest);
-    return this.terminal.getReconciliation(reconciliationRequest);
+  getReconciliation(reconciliationRequest: NPRequest): Promise<ReceiptModel> {
+    return this.terminal
+      .getReconciliation(reconciliationRequest)
+      .then((response: string) => {
+        return parseAndTransformResponse<ReceiptModel>(response);
+      });
   }
 
-  getTransactionList(transactionListRequest: NPRequest): Promise<any> {
-    return this.terminal.getTransactionList(transactionListRequest);
+  getTransactionList(
+    transactionListRequest: NPRequest
+  ): Promise<TransactionListModel> {
+    return this.terminal
+      .getTransactionList(transactionListRequest)
+      .then((response: string) => {
+        return parseAndTransformResponse<TransactionListModel>(response);
+      });
   }
 
-  getReconciliationList(reconciliationListRequest: NPRequest): Promise<any> {
-    return this.terminal.getReconciliationList(reconciliationListRequest);
+  getReconciliationList(
+    reconciliationListRequest: NPRequest
+  ): Promise<ReconciliationListModel> {
+    return this.terminal
+      .getReconciliationList(reconciliationListRequest)
+      .then((response: string) => {
+        return parseAndTransformResponse<ReconciliationListModel>(response);
+      });
   }
 
   disconnectTerminal(timeout: number): Promise<any> {

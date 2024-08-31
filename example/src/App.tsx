@@ -26,7 +26,14 @@ import { showAlert } from './utils';
 import styles from './styles';
 import type VerifyResult from '../../src/Models/VerifyResult';
 import type { Terminal } from '../../src/Models/Terminal';
-import type { TransactionModel } from '../../src/Models/TransactionModel';
+import type {
+  TransactionModel,
+  TransactionReceiptModel,
+} from '../../src/Models/TransactionModel';
+import type { ReconcileModel } from '../../src/Models/ReconcileModel';
+import type { ReconciliationListModel } from '../../src/Models/ReconciliationListModel';
+import type { ReceiptModel } from '../../src/Models/ReconciliationModel';
+import type { TransactionListModel } from '../../src/Models/TransactionListModel';
 
 interface AppState {
   isConnected: boolean;
@@ -483,10 +490,8 @@ export default function App() {
     };
     nearpay
       .getTransaction(transactionRequest)
-      .then((result: any) => {
-        console.log(`getTransaction result ${result}`);
-        console.log(`getTransaction result json ${JSON.parse(result)}`);
-        const transactionString = `Transaction response : ${JSON.stringify(result)}`;
+      .then((result: TransactionReceiptModel) => {
+        const transactionString = `Transaction response : ${result.transactionReceipts[0]?.amount_authorized.value} ${result.transactionReceipts[0]?.amount_authorized.label.english}`;
         setState((prevState) => ({
           ...prevState,
           response: transactionString,
@@ -507,8 +512,8 @@ export default function App() {
     };
     nearpay
       .getReconciliation(reconciliationRequest)
-      .then((result: any) => {
-        const reconciliationString = `Reconciliation response: ${JSON.stringify(result)}`;
+      .then((result: ReceiptModel) => {
+        const reconciliationString = `getReconciliation response: ${result.receipt.card_acceptor_terminal_id} ${result.receipt.merchant.name.english}`;
         setState((prevState) => ({
           ...prevState,
           response: reconciliationString,
@@ -533,10 +538,11 @@ export default function App() {
 
     nearpay
       .getTransactionList(transactionListRequest)
-      .then((result: any) => {
-        console.log(`transactionList ${result}`);
-
-        const transactionListString = `Transaction list response: ${JSON.stringify(result)}`;
+      .then((result: TransactionListModel) => {
+        const transactionListString = `Transaction List response: ${result.transactionList.transactions[0]?.amount_authorized} ${result.transactionList.transactions[0]?.currency.english}`;
+        console.log(
+          `Transaction List  number => ${result.transactionList.count}`
+        );
         setState((prevState) => ({
           ...prevState,
           response: transactionListString,
@@ -550,7 +556,7 @@ export default function App() {
 
   const getReconciliationList = () => {
     const startDate = new Date(Date.UTC(2023, 12, 1));
-    const endDate = new Date(Date.UTC(2024, 5, 13));
+    const endDate = new Date(Date.UTC(2024, 9, 13));
     const reconciliationListRequest = {
       startDate: startDate.toISOString(),
       endDate: endDate.toISOString(),
@@ -560,8 +566,11 @@ export default function App() {
     };
     nearpay
       .getReconciliationList(reconciliationListRequest)
-      .then((result: any) => {
-        const reconciliationListString = `Reconciliation List response: ${JSON.stringify(result)}`;
+      .then((result: ReconciliationListModel) => {
+        const reconciliationListString = `Reconciliation List response: ${result.reconciliationList.total}`;
+        console.log(
+          `reconciliation number => ${result.reconciliationList.total}`
+        );
         setState((prevState) => ({
           ...prevState,
           response: reconciliationListString,
@@ -608,6 +617,8 @@ export default function App() {
     nearpay
       .getInfo(60000)
       .then((result: any) => {
+        console.log(`userInfo ${JSON.stringify(result)}`);
+
         const getUserInfoString = `Get User response: ${JSON.stringify(result)}`;
         setState((prevState) => ({
           ...prevState,
@@ -798,16 +809,16 @@ export default function App() {
   };
 
   const onReverse = () => {
-    nearpay.onReverse((result: any) => {
-      const reverseString = JSON.stringify(result);
+    nearpay.onReverse((result: TransactionModel) => {
+      const reverseString = `Reverse result => ${result.transactionReceipts[0]?.thanks_message.english} ${result.transactionReceipts[0]?.tid}`;
       setState((prevState) => ({ ...prevState, response: reverseString }));
     });
   };
 
   const onReconciliation = () => {
-    nearpay.onReconciliation((result: any) => {
-      const reconcileResponseString = JSON.stringify(result);
-      const reconcileID = result.reconcileReceipt.id;
+    nearpay.onReconciliation((result: ReconcileModel) => {
+      const reconcileResponseString = `Reconcile result => ${result.reconcileReceipt.merchant.name.english} ${result.reconcileReceipt.id}`;
+      const reconcileID = `${result.reconcileReceipt.id}`;
       setState((prevState) => ({
         ...prevState,
         reconcileID: reconcileID,
