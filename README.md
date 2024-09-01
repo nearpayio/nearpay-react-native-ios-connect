@@ -250,7 +250,7 @@ Getting a transaction
       terminalTimeout: 60000,
       timeout: 60000
     }
-    nearpay.getTransaction(transactionRequest).then((result: any) => {
+    nearpay.getTransaction(transactionRequest).then((result: TransactionReceiptModel) => {
     // Do something here
 
     }).catch(error => {
@@ -270,7 +270,7 @@ Getting a reconciliation
       terminalTimeout: 60000,
       timeout: 60000
     }
-    nearpay.getReconciliation(reconciliationRequest).then((result: any) => {
+    nearpay.getReconciliation(reconciliationRequest).then((result: ReceiptModel) => {
     // Do something here
 
 
@@ -294,7 +294,7 @@ const getTransactionList = () => {
       pageSize: 10,
       timeout: 60000
     }
-    nearpay.getTransactionList(transactionListRequest).then((result: any) => {
+    nearpay.getTransactionList(transactionListRequest).then((result: TransactionListModel) => {
      // Do something here
 
     }).catch(error => {
@@ -317,7 +317,7 @@ Getting reconciliation list
       pageSize: 10,
       timeout: 60000
     }
-    nearpay.getReconciliationList(reconciliationListRequest).then((result: any) => {
+    nearpay.getReconciliationList(reconciliationListRequest).then((result: ReconciliationListModel) => {
       // Do something here
 
 
@@ -399,7 +399,7 @@ onReconnectSuggestion event
 onPurchase event
 
 ```js
-    nearpay.onPurchase((result: any) => {
+    nearpay.onPurchase((result: TransactionModel) => {
     // Handle purchase event
 
     });
@@ -408,7 +408,7 @@ onPurchase event
 onRefund event
 
 ```js
-    nearpay.onRefund((result: any) => {
+    nearpay.onRefund((result: TransactionModel) => {
     // Handle refund event
 
 });
@@ -417,7 +417,7 @@ onRefund event
 onReverse event
 
 ```js
-    nearpay.onReverse((result: any) => {
+    nearpay.onReverse((result: TransactionModel) => {
      // Handle reversal event
 
 });
@@ -426,7 +426,7 @@ onReverse event
 onReconciliation event
 
 ```js
-    nearpay.onReconciliation((result: any) => {
+    nearpay.onReconciliation((result: ReconcileModel) => {
     // Handle reconciliation event
 
 });
