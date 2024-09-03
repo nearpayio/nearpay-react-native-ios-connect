@@ -1,4 +1,4 @@
-import type LogoutReason from './entities/LogoutReason';
+import type LogoutReason from './entities/LogoutResponse';
 import type DeviceInfo from './entities/NearPayDevice';
 import type { TransactionModel } from './Models/TransactionModel';
 export type DiscoverDevicesCallback = (devices: DeviceInfo[]) => void;
