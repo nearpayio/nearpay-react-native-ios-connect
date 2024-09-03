@@ -1,5 +1,4 @@
 import {
-  StyleSheet,
   View,
   Text,
   Pressable,
@@ -9,31 +8,31 @@ import {
   type AppStateStatus,
   Platform,
 } from 'react-native';
-import type DeviceInfo from '../../lib/typescript/src/entities/NearPayDevice';
 import React, { useEffect, useState } from 'react';
-import type LogoutReason from '../../src/entities/LogoutReason';
 import uuid from 'react-native-uuid';
-import Job from '../../src/entities/Job';
-import { NearpayConnect } from 'react-native-nearpay-connect-core';
+import {
+  DeviceInfo,
+  Environment,
+  Job,
+  LoginMethod,
+  LogoutResponse,
+  NearpayConnect,
+  NetworkConfiguration,
+  type ReceiptModel,
+  type ReconcileModel,
+  type ReconciliationListModel,
+  type Terminal,
+  type TransactionListModel,
+  type TransactionModel,
+  type TransactionReceiptModel,
+  type VerifyResult,
+} from 'react-native-nearpay-connect-core';
 import { PulseAnimation } from './PulseAnimation';
-import type { NPRequest } from '../../src/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppState as RNAppState } from 'react-native';
-import { LoginMethod } from '../../src/entities/LoginMethod';
-import { Environment } from '../../src/entities/Environment';
-import { NetworkConfiguration } from '../../src/entities/NetworkConfiguration';
 import { showAlert } from './utils';
 import styles from './styles';
-import type VerifyResult from '../../src/Models/VerifyResult';
-import type { Terminal } from '../../src/Models/Terminal';
-import type {
-  TransactionModel,
-  TransactionReceiptModel,
-} from '../../src/Models/TransactionModel';
-import type { ReconcileModel } from '../../src/Models/ReconcileModel';
-import type { ReconciliationListModel } from '../../src/Models/ReconciliationListModel';
-import type { ReceiptModel } from '../../src/Models/ReconciliationModel';
-import type { TransactionListModel } from '../../src/Models/TransactionListModel';
+import type { NPRequest } from '../../src/types';
 
 interface AppState {
   isConnected: boolean;
@@ -712,7 +711,7 @@ export default function App() {
   };
 
   const onLogout = () => {
-    nearpay.onLogout((result: LogoutReason) => {
+    nearpay.onLogout((result: LogoutResponse) => {
       const logoutResponseString = `Terminal Token: ${result.terminalToken}, User Token: ${result.userToken}, Logout Reason: ${result.logoutReason}`;
       setState((prevState) => ({
         ...prevState,

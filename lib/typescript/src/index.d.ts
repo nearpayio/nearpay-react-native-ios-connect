@@ -1,5 +1,11 @@
 import type Job from './entities/Job';
-import type { Callback, DiscoverDevicesCallback, LogoutReasonCallback, NPRequest } from './types';
+import type { Callback, DiscoverDevicesCallback, LogoutReasonCallback, NPRequest, TransactionCallback } from './types';
+import type VerifyResult from './Models/VerifyResult';
+import type { Terminal } from './Models/Terminal';
+import type { TransactionReceiptModel } from './Models/TransactionModel';
+import type { ReconciliationListModel } from './Models/ReconciliationListModel';
+import type { ReceiptModel } from './Models/ReconciliationModel';
+import type { TransactionListModel } from './Models/TransactionListModel';
 export declare class NearpayConnect {
     private core;
     private auth;
@@ -19,10 +25,10 @@ export declare class NearpayConnect {
     onDisconnect(callback: Callback): void;
     onReconnectSuggestion(callback: Callback): void;
     onStatusChange(callback: Callback): void;
-    onStartPurchase(callback: Callback): void;
-    onStartRefund(callback: Callback): void;
-    onStartReverse(callback: Callback): void;
-    onStartReconciliation(callback: Callback): void;
+    onPurchase(callback: TransactionCallback): void;
+    onRefund(callback: TransactionCallback): void;
+    onReverse(callback: Callback): void;
+    onReconciliation(callback: Callback): void;
     onCancelPurchase(callback: Callback): void;
     onCancelRefund(callback: Callback): void;
     onCancelReverse(callback: Callback): void;
@@ -40,10 +46,10 @@ export declare class NearpayConnect {
     disconnect(): Promise<boolean>;
     ping(timeout: number): Promise<boolean>;
     login(method: string, value: string, timeout: number): Promise<any>;
-    verify(otp: string, timeout: number): Promise<any>;
-    getTerminalList(timeout: number): Promise<any>;
+    verify(otp: string, timeout: number): Promise<VerifyResult>;
+    getTerminalList(timeout: number): Promise<Terminal[]>;
     logout(timeout: number): Promise<boolean>;
-    connectTerminal(terminalID: string, timeout: number): Promise<any>;
+    connectTerminal(terminalID: string, timeout: number): Promise<string>;
     disconnectFromCurrentTerminal(timeout: number): Promise<boolean>;
     getInfo(timeout: number): Promise<any>;
     purchase(purchaseData: NPRequest): Promise<any>;
@@ -52,10 +58,10 @@ export declare class NearpayConnect {
     reconcile(reconcileData: NPRequest): Promise<any>;
     start(job: Job): Promise<any>;
     cancel(job: Job): Promise<any>;
-    getTransaction(transactionRequest: NPRequest): Promise<any>;
-    getReconciliation(reconciliationRequest: NPRequest): Promise<any>;
-    getTransactionList(transactionListRequest: NPRequest): Promise<any>;
-    getReconciliationList(reconciliationListRequest: NPRequest): Promise<any>;
+    getTransaction(transactionRequest: NPRequest): Promise<TransactionReceiptModel>;
+    getReconciliation(reconciliationRequest: NPRequest): Promise<ReceiptModel>;
+    getTransactionList(transactionListRequest: NPRequest): Promise<TransactionListModel>;
+    getReconciliationList(reconciliationListRequest: NPRequest): Promise<ReconciliationListModel>;
     disconnectTerminal(timeout: number): Promise<any>;
 }
 //# sourceMappingURL=index.d.ts.map

@@ -101,6 +101,41 @@ nearpay.login(LoginMethod.Email, "email_address", 60000).then(((result: any) => 
 });
 ```
 
+Verifying OTP
+
+```js
+nearpay.verify(otp, 6000).then((result: VerifyResult) => {
+      const verifyOTPResponseString = `Verify response JSON Result: ${result}`;
+      // Retrive Terminal List
+
+    })
+    .catch((error) => {
+     // Handle error
+    });
+```
+
+Retrieving Terminal List
+
+```js
+nearpay.getTerminalList(6000).then((result: Terminal[]) => {
+     // Connect to Terminal
+    })
+    .catch((error) => {
+     // Handle error
+    });
+```
+
+Connecting to a Terminal
+
+```js
+  nearpay.connectTerminal(terminalID, 6000).then((result: string) => {
+      // Start using terminal functions
+    })
+    .catch((error) => {
+     // Handle error
+    });
+```
+
 Logging out
 
 ```js

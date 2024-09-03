@@ -5,7 +5,7 @@ class NearpayEventEmitter {
   private terminalEmitter?: NativeEventEmitter;
   private proxyEmitter?: NativeEventEmitter;
 
-  private listeners: { [key: string]: () => void } = {};
+  private listeners: { [key: string]: (() => void) | undefined } = {};
 
   constructor() {
     if (Platform.OS === 'ios') {
@@ -50,8 +50,9 @@ class NearpayEventEmitter {
   }
 
   public removeListener(eventName: string): void {
-    if (this.listeners[eventName]) {
-      this.listeners[eventName](); // Remove the existing listener
+    const listener = this.listeners[eventName];
+    if (listener) {
+      listener(); // Remove the existing listener
       delete this.listeners[eventName]; // Delete the reference
     }
   }

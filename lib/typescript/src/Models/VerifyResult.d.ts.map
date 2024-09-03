@@ -1,0 +1,1 @@
+{"version":3,"file":"VerifyResult.d.ts","sourceRoot":"","sources":["../../../../src/Models/VerifyResult.tsx"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,WAAW,QAAQ;IAC/B,MAAM,EAAE,MAAM,CAAC;IACf,KAAK,EAAE,MAAM,CAAC;IACd,IAAI,EAAE,MAAM,CAAC;CACd;AAED,MAAM,CAAC,OAAO,WAAW,YAAY;IACnC,KAAK,EAAE,MAAM,CAAC;IACd,IAAI,EAAE,QAAQ,CAAC;CAChB"}

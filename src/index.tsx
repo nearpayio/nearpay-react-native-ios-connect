@@ -1,14 +1,16 @@
-import type Job from './entities/Job';
-import LogoutResponse from './entities/LogoutReason';
-import DeviceInfo from './entities/NearPayDevice';
-
 import NearpayEventEmitter, { EventType } from './NearpayEventEmitter';
-import type {
-  Callback,
-  DiscoverDevicesCallback,
-  LogoutReasonCallback,
-  NPRequest,
-  TransactionCallback,
+import {
+  DeviceInfo,
+  Job,
+  LogoutResponse,
+  Environment,
+  NetworkConfiguration,
+  LoginMethod,
+  type Callback,
+  type DiscoverDevicesCallback,
+  type LogoutReasonCallback,
+  type NPRequest,
+  type TransactionCallback,
 } from './types';
 import NearpayConnectTerminal, {
   type INearpayConnectTerminal,
@@ -36,6 +38,24 @@ import type { ReconcileModel } from './Models/ReconcileModel';
 import type { ReconciliationListModel } from './Models/ReconciliationListModel';
 import type { ReceiptModel } from './Models/ReconciliationModel';
 import type { TransactionListModel } from './Models/TransactionListModel';
+export {
+  DeviceInfo,
+  LoginMethod,
+  LogoutResponse,
+  Job,
+  Environment,
+  NetworkConfiguration,
+};
+export type {
+  VerifyResult,
+  Terminal,
+  TransactionModel,
+  TransactionReceiptModel,
+  ReconcileModel,
+  ReconciliationListModel,
+  ReceiptModel,
+  TransactionListModel,
+};
 
 export class NearpayConnect {
   private core: INearpayConnectCore;
